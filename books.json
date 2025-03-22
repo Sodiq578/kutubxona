@@ -1,0 +1,73 @@
+[
+  {
+    "id": "1",
+    "name": "Video Qo'llanma",
+    "author": "Elektron kutubxona",
+    "genre": "Darslik",
+    "file_id": "BAACAgQAAxkBAAIDeWfelNbpaIgVhG_xLbtYWmVRHQJmAAKkBgACS-CtU6Kq41f-Mbc4NgQ",
+    "file_type": "video"
+  },
+  {
+    "id": "2",
+    "name": "SHerlock Holmes",
+    "author": "Artur Konan Doyl",
+    "genre": "Badiiy",
+    "file_id": "BQACAgIAAxkBAAID0mfenRtV1R-RXJBl-p54fti04gPAAALkZgACUSL5SkaXg16ruzR4NgQ",
+    "file_type": "document",
+    "image_id": "AgACAgIAAxkBAAID1WfenT8dCktiWadsDtQu20vyNgoDAALR8DEbUSL5StVbA9aFjNziAQADAgADbQADNgQ"
+  },
+  {
+    "id": "3",
+    "name": "sarmoya tikish",
+    "author": "robert kiyosaki",
+    "genre": "Ilmiy",
+    "file_id": "BQACAgIAAxkBAAID-2fenxupnsJOYYqhbF-pjT1cqm8lAAIDZwACUSL5ShDW0TVG0zDCNgQ",
+    "file_type": "document",
+    "image_id": null
+  },
+  {
+    "id": "4",
+    "name": "Sinov, haqorat va jasorat haqidagi UCH MUHTASHAM HIKOYA",
+    "author": "AbdukarimMirzayev",
+    "genre": "Shaxsiy Rivojlanish",
+    "file_id": "BAACAgIAAxkBAAIEEWfeoR0Ysq4fTyzJwadAyGtgRH9VAAL1YgAC0NF4Sn82DwqD_pmbNgQ",
+    "file_type": "video",
+    "image_id": null
+  },
+  {
+    "id": "5",
+    "name": "Sarmoya tikish",
+    "author": "Robert Kiyosaki",
+    "genre": "Shaxsiy Rivojlanish",
+    "file_id": "BQACAgIAAxkBAAIEJmfeotYDyzmtuIwiLSrUpsws6nXaAAJkZwACUSL5SjRTZgtchhPpNgQ",
+    "file_type": "document",
+    "image_id": "AgACAgIAAxkBAAIEKWfeowGPwu6X0ZJUTINrYrat8-nZAAL78DEbUSL5Slyjc-vDVtjsAQADAgADbQADNgQ"
+  },
+  {
+    "id": "6",
+    "name": "Rahbarlik Sanati",
+    "author": "Shavkat Razzoqov",
+    "genre": "Shaxsiy Rivojlanish",
+    "file_id": "BQACAgIAAxkBAAIEN2feo2JGez5XjxrdHl0t4s9VF_v7AAJ4ZwACUSL5ShbCYAW7wVSENgQ",
+    "file_type": "document",
+    "image_id": null
+  },
+  {
+    "id": "7",
+    "name": "Pul Muvaffaqiyat va Siz",
+    "author": "Jon Kexo",
+    "genre": "Ilmiy",
+    "file_id": "BQACAgIAAxkBAAIESGfeo8xVqfhL1vB_v2KNmAH1Qor4AAJ_ZwACUSL5SqxgIev0zPAzNgQ",
+    "file_type": "document",
+    "image_id": null
+  },
+  {
+    "id": "8",
+    "name": "Xiyonatda ayblangan ayol hikoyasi",
+    "author": "Abdukarim Mirzayev",
+    "genre": "Podkast",
+    "file_id": "BAACAgIAAxkBAAIEb2fepWTecqKZWa0FmbJdZd7gUyApAAKkaQAC6UGBStyj6aziPKPCNgQ",
+    "file_type": "video",
+    "image_id": null
+  }
+]

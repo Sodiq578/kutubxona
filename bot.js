@@ -6,10 +6,12 @@ const books = require("./books.json");
 
 const TOKEN = process.env.BOT_TOKEN;
 const ADMIN_IDS = process.env.ADMIN_ID.split(",").map((id) => id.trim()); // Bir nechta adminlar
+const CHANNEL_LINK = "https://t.me/KinolarTarjimaFantastikYangiKino"; // Kanal linki
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 const waitingForBook = {};
 const userLanguage = {}; // Foydalanuvchi tilini saqlash uchun
+const firstTimeUsers = new Set(); // Birinchi marta start bosgan foydalanuvchilarni saqlash uchun
 
 // Til tanlash menyusi
 const languageMenu = {
@@ -49,22 +51,61 @@ function getBackMenu(lang) {
   };
 }
 
-// Fayl yuborilganda "Ulashish" va "Orqaga qaytish" tugmalari
+// Fayl yuborilganda "Orqaga qaytish" tugmasi
 function getFileOptions(lang) {
   return {
     reply_markup: {
       inline_keyboard: [
-        [{ text: lang === "uz" ? "📤 Ulashish" : lang === "ru" ? "📤 Поделиться" : "📤 Share", callback_data: "share" }],
         [{ text: lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back", callback_data: "back" }],
       ],
     },
   };
 }
 
+// Video qo'llanmani yuborish
+function sendTutorial(chatId, lang) {
+  const tutorial = books.find((b) => b.id === "1"); // Video qo'llanmani topish
+  if (tutorial) {
+    const caption = `📹 *${tutorial.name}*\n👤 *${lang === "uz" ? "Muallif" : lang === "ru" ? "Автор" : "Author"}:* ${tutorial.author}\n📂 *${lang === "uz" ? "Janr" : lang === "ru" ? "Жанр" : "Genre"}:* ${tutorial.genre}`;
+    bot.sendVideo(chatId, tutorial.file_id, { caption, parse_mode: "Markdown" });
+  } else {
+    bot.sendMessage(chatId, lang === "uz" ? "❌ Video qo'llanma topilmadi." : lang === "ru" ? "❌ Видео инструкция не найдена." : "❌ Tutorial video not found.");
+  }
+}
+
 // Botni ishga tushirish
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId, "Tilni tanlang / Выберите язык / Choose language:", languageMenu);
+
+  if (!firstTimeUsers.has(chatId)) {
+    firstTimeUsers.add(chatId);
+    sendTutorial(chatId, userLanguage[chatId] || "uz"); // Video qo'llanmani yuborish
+    setTimeout(() => {
+      bot.sendMessage(chatId, "Tilni tanlang / Выберите язык / Choose language:", languageMenu);
+    }, 2000); // 2 soniya kutib, keyin til tanlash menyusi
+  } else {
+    bot.sendMessage(chatId, "Tilni tanlang / Выберите язык / Choose language:", languageMenu);
+  }
+});
+
+// /contact buyrug'i
+bot.onText(/\/contact/, (msg) => {
+  const chatId = msg.chat.id;
+  const lang = userLanguage[chatId] || "uz";
+
+  const contactMessage = lang === "uz" 
+    ? "Adminlar bilan bog'lanish uchun:\n📞 Telefon: +998974634455\n📲 Telegram: https://t.me/Sadikov001"
+    : lang === "ru" 
+    ? "Для связи с администраторами:\n📞 Телефон: +998974634455\n📲 Telegram: https://t.me/Sadikov001"
+    : "To contact the admins:\n📞 Phone: +998974634455\n📲 Telegram: https://t.me/Sadikov001";
+
+  bot.sendMessage(chatId, contactMessage);
+});
+
+// /help buyrug'i
+bot.onText(/\/help/, (msg) => {
+  const chatId = msg.chat.id;
+  sendTutorial(chatId, userLanguage[chatId] || "uz"); // Video qo'llanmani yuborish
 });
 
 // Tilni tanlash
@@ -87,7 +128,7 @@ bot.on("message", async (msg) => {
   if (!text) return;
 
   // Admin uchun maxsus buyruq
-  if (text === "/sodiq191929" && ADMIN_IDS.includes(msg.from.id.toString())) {
+  if (text === "/addbook" && ADMIN_IDS.includes(msg.from.id.toString())) {
     bot.sendMessage(chatId, lang === "uz" ? "📂 Yangi faylni jo‘nating." : lang === "ru" ? "📂 Отправьте новый файл." : "📂 Send a new file.", getBackMenu(lang));
     waitingForBook[chatId] = { step: "waiting_for_file" };
     return;
@@ -107,6 +148,8 @@ bot.on("message", async (msg) => {
           [{ text: "Podkast", callback_data: "genre_Podkast" }, { text: "Audio Dars", callback_data: "genre_Audio Dars" }],
           [{ text: "Badiiy", callback_data: "genre_Badiiy" }, { text: "Ilmiy", callback_data: "genre_Ilmiy" }],
           [{ text: "Darslik", callback_data: "genre_Darslik" }, { text: "Boshqa", callback_data: "genre_Boshqa" }],
+          [{ text: "Shaxsiy Rivojlanish", callback_data: "genre_Shaxsiy Rivojlanish" }],
+          [{ text: "Detektiv", callback_data: "genre_Detektiv" }], // Yangi janr qo'shildi
           [{ text: lang === "uz" ? "Barchasi" : lang === "ru" ? "Все" : "All", callback_data: "genre_all" }],
         ],
       },
@@ -122,7 +165,7 @@ bot.on("message", async (msg) => {
 
   // Orqaga qaytish
   if (text === (lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back")) {
-    bot.sendMessage(chatId, lang === "uz" ? "Oldingi bosqichga qaytildi." : lang === "ru" ? "Возврат к предыдущему шагу." : "Returned to the previous step.", getBackMenu(lang));
+    bot.sendMessage(chatId, lang === "uz" ? "Asosiy menyuga qaytildi." : lang === "ru" ? "Возврат в главное меню." : "Returned to the main menu.", getMainMenu(lang));
     return;
   }
 
@@ -133,7 +176,7 @@ bot.on("message", async (msg) => {
   }
 
   // Kitob qidirish
-  if (text !== "/start") { // Faqat kitob qidirish bosqichida xabar chiqarish
+  if (text !== "/start") {
     const results = books.filter(
       (b) => b.id === text || b.name.toLowerCase().includes(text.toLowerCase()) || b.author?.toLowerCase().includes(text.toLowerCase()) || b.genre?.toLowerCase().includes(text.toLowerCase())
     );
@@ -160,9 +203,48 @@ async function processFile(msg, type) {
   if (!waitingForBook[chatId] || waitingForBook[chatId].step !== "waiting_for_file" || !ADMIN_IDS.includes(msg.from.id.toString())) return;
 
   let file_id = type === "photo" ? msg.photo[msg.photo.length - 1].file_id : msg[type].file_id;
-  waitingForBook[chatId] = { file_id, file_type: type, step: "waiting_for_name" };
-  bot.sendMessage(chatId, lang === "uz" ? "📖 Fayl nomini kiriting:" : lang === "ru" ? "📖 Введите название файла:" : "📖 Enter the file name:", getBackMenu(lang));
+  waitingForBook[chatId] = { file_id, file_type: type, step: "waiting_for_image_confirmation" };
+
+  // Rasm borligini so'rash
+  bot.sendMessage(chatId, lang === "uz" ? "📷 Fayl bilan birga rasm ham bormi?" : lang === "ru" ? "📷 Есть ли изображение вместе с файлом?" : "📷 Is there an image with the file?", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: lang === "uz" ? "Ha" : lang === "ru" ? "Да" : "Yes", callback_data: "has_image" }],
+        [{ text: lang === "uz" ? "Yo'q" : lang === "ru" ? "Нет" : "No", callback_data: "no_image" }],
+      ],
+    },
+  });
 }
+
+// Rasm borligini tasdiqlash
+bot.on("callback_query", (query) => {
+  const chatId = query.message.chat.id;
+  const lang = userLanguage[chatId] || "uz";
+  const data = query.data;
+
+  if (data === "has_image" || data === "no_image") {
+    if (data === "has_image") {
+      bot.sendMessage(chatId, lang === "uz" ? "📷 Rasmni yuboring." : lang === "ru" ? "📷 Отправьте изображение." : "📷 Send the image.");
+      waitingForBook[chatId].step = "waiting_for_image";
+    } else {
+      waitingForBook[chatId].image_id = null;
+      bot.sendMessage(chatId, lang === "uz" ? "📖 Fayl nomini kiriting:" : lang === "ru" ? "📖 Введите название файла:" : "📖 Enter the file name:", getBackMenu(lang));
+      waitingForBook[chatId].step = "waiting_for_name";
+    }
+  }
+});
+
+// Rasmni qabul qilish
+bot.on("photo", (msg) => {
+  const chatId = msg.chat.id;
+  const lang = userLanguage[chatId] || "uz";
+
+  if (waitingForBook[chatId] && waitingForBook[chatId].step === "waiting_for_image") {
+    waitingForBook[chatId].image_id = msg.photo[msg.photo.length - 1].file_id;
+    bot.sendMessage(chatId, lang === "uz" ? "📖 Fayl nomini kiriting:" : lang === "ru" ? "📖 Введите название файла:" : "📖 Enter the file name:", getBackMenu(lang));
+    waitingForBook[chatId].step = "waiting_for_name";
+  }
+});
 
 // Fayl nomi, muallif va boshqa ma'lumotlarni qayta ishlash
 bot.on("message", async (msg) => {
@@ -190,6 +272,8 @@ bot.on("message", async (msg) => {
           [{ text: "Podkast", callback_data: "Podkast" }, { text: "Audio Dars", callback_data: "Audio Dars" }],
           [{ text: "Badiiy", callback_data: "Badiiy" }, { text: "Ilmiy", callback_data: "Ilmiy" }],
           [{ text: "Darslik", callback_data: "Darslik" }, { text: "Boshqa", callback_data: "Boshqa" }],
+          [{ text: "Shaxsiy Rivojlanish", callback_data: "Shaxsiy Rivojlanish" }],
+          [{ text: "Detektiv", callback_data: "Detektiv" }], // Yangi janr qo'shildi
         ],
       },
     });
@@ -224,6 +308,13 @@ bot.on("callback_query", (query) => {
   if (waitingForBook[chatId] && waitingForBook[chatId].step === "waiting_for_type") {
     waitingForBook[chatId].genre = data;
     saveBook(chatId, lang);
+    return;
+  }
+
+  // "Orqaga" tugmasi bosilganda
+  if (data === "back") {
+    bot.sendMessage(chatId, lang === "uz" ? "Asosiy menyuga qaytildi." : lang === "ru" ? "Возврат в главное меню." : "Returned to the main menu.", getMainMenu(lang));
+    return;
   }
 });
 
@@ -232,7 +323,7 @@ function saveBook(chatId, lang) {
   if (!ADMIN_IDS.includes(chatId.toString())) return;
 
   const newBook = waitingForBook[chatId];
-  books.push({ id: newBook.id, name: newBook.name, author: newBook.author, genre: newBook.genre, file_id: newBook.file_id, file_type: newBook.file_type });
+  books.push({ id: newBook.id, name: newBook.name, author: newBook.author, genre: newBook.genre, file_id: newBook.file_id, file_type: newBook.file_type, image_id: newBook.image_id });
   fs.writeFileSync(path.join(__dirname, "books.json"), JSON.stringify(books, null, 2));
   bot.sendMessage(chatId, lang === "uz" ? `✅ *${newBook.name}* (${newBook.author}) bazaga qo‘shildi!` : lang === "ru" ? `✅ *${newBook.name}* (${newBook.author}) добавлено в базу!` : `✅ *${newBook.name}* (${newBook.author}) added to the database!`, { parse_mode: "Markdown" });
   delete waitingForBook[chatId];
@@ -240,7 +331,7 @@ function saveBook(chatId, lang) {
 
 // Kitobni yuborish
 function sendBook(chatId, book, lang) {
-  let caption = `📖 *${book.name}*\n👤 *${lang === "uz" ? "Muallif" : lang === "ru" ? "Автор" : "Author"}:* ${book.author}\n📂 *${lang === "uz" ? "Janr" : lang === "ru" ? "Жанр" : "Genre"}:* ${book.genre}`;
+  let caption = `📖 *${book.name}*\n👤 *${lang === "uz" ? "Muallif" : lang === "ru" ? "Автор" : "Author"}:* ${book.author}\n📂 *${lang === "uz" ? "Janr" : lang === "ru" ? "Жанр" : "Genre"}:* ${book.genre}\n\n${CHANNEL_LINK}`;
   if (book.file_id) {
     if (book.file_type === "document") bot.sendDocument(chatId, book.file_id, { caption, parse_mode: "Markdown", ...getFileOptions(lang) });
     else if (book.file_type === "photo") bot.sendPhoto(chatId, book.file_id, { caption, parse_mode: "Markdown", ...getFileOptions(lang) });
