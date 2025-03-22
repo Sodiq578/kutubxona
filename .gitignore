@@ -1,0 +1,6 @@
+echo "node_modules/" >> .gitignore
+echo ".env" >> .gitignore
+echo "books.db" >> .gitignore
+echo "books.json" >> .gitignore
+echo "package-lock.json" >> .gitignore
+echo "node_modules/" >> .gitignore
