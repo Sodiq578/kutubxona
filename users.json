@@ -6,7 +6,8 @@
     "username": "Husanboy_Azamov",
     "language_code": "en",
     "is_premium": true,
-    "language": "uz"
+    "language": "uz",
+    "last_active": "2025-03-26T21:33:04.649Z"
   },
   {
     "id": 5838205785,
@@ -17,8 +18,26 @@
     "join_date": "2025-03-25T12:33:49.192Z",
     "last_activity": "2025-03-25T14:14:25.894Z",
     "message_count": 55,
-    "last_active": "2025-03-26T16:41:32.654Z",
-    "language": "uz"
+    "last_active": "2025-03-28T23:15:54.976Z",
+    "language": "uz",
+    "actions": [
+      {
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-28T23:14:59.356Z"
+      },
+      {
+        "action": "Tilni uz ga o'zgartirdi",
+        "timestamp": "2025-03-28T23:15:03.458Z"
+      },
+      {
+        "action": "\"users.json\" bo'yicha qidiruv",
+        "timestamp": "2025-03-28T23:15:08.592Z"
+      },
+      {
+        "action": "\"6\" bo'yicha qidiruv",
+        "timestamp": "2025-03-28T23:15:54.976Z"
+      }
+    ]
   },
   {
     "id": 7412640853,
@@ -27,6 +46,397 @@
     "last_name": null,
     "language": "uz",
     "joined_at": "2025-03-26T15:42:54.406Z",
-    "last_active": "2025-03-26T15:44:02.359Z"
+    "last_active": "2025-03-28T23:16:23.115Z",
+    "actions": [
+      {
+        "action": "\"0\" bo'yicha qidiruv",
+        "timestamp": "2025-03-28T23:14:13.452Z"
+      },
+      {
+        "action": "\"10\" bo'yicha qidiruv",
+        "timestamp": "2025-03-28T23:14:14.937Z"
+      },
+      {
+        "action": "\"/addbook\" bo'yicha qidiruv",
+        "timestamp": "2025-03-28T23:16:14.124Z"
+      },
+      {
+        "action": "Kitob qo'shish boshladi",
+        "timestamp": "2025-03-28T23:16:14.126Z"
+      },
+      {
+        "action": "Orqaga qaytdi",
+        "timestamp": "2025-03-28T23:16:23.115Z"
+      }
+    ]
+  },
+  {
+    "id": 7538288028,
+    "username": "amor_fati_075",
+    "first_name": "🦋R🦋",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T18:21:06.905Z",
+    "last_active": "2025-03-27T18:23:48.073Z"
+  },
+  {
+    "id": 7099908762,
+    "username": null,
+    "first_name": "Otabek",
+    "last_name": ".",
+    "language": "uz",
+    "joined_at": "2025-03-27T18:24:09.784Z",
+    "last_active": "2025-03-27T22:24:03.266Z"
+  },
+  {
+    "id": 6547642176,
+    "username": null,
+    "first_name": "Jo'rayeva Zarina",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T19:00:11.306Z",
+    "last_active": "2025-03-27T19:00:38.691Z"
+  },
+  {
+    "id": 624352960,
+    "username": null,
+    "first_name": "2112",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T22:24:03.252Z",
+    "last_active": "2025-03-27T22:24:03.259Z"
+  },
+  {
+    "id": 7206606990,
+    "username": null,
+    "first_name": "Gulsanam",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T22:24:03.260Z",
+    "last_active": "2025-03-27T22:24:03.264Z"
+  },
+  {
+    "id": 678850456,
+    "username": "QShN9698",
+    "first_name": ".",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T22:24:03.260Z",
+    "last_active": "2025-03-28T12:11:24.124Z"
+  },
+  {
+    "id": 183754778,
+    "username": "Askaraliev23",
+    "first_name": "Askaraliev 🇺🇸",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-27T22:24:03.267Z",
+    "last_active": "2025-03-27T22:24:03.268Z"
+  },
+  {
+    "id": 250888111,
+    "username": null,
+    "first_name": "ㅤㅤㅤㅤㅤДаминов Отабек",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:24.120Z",
+    "last_active": "2025-03-28T12:11:24.122Z"
+  },
+  {
+    "id": 7442943686,
+    "username": null,
+    "first_name": "Ibrohim",
+    "last_name": "Xabibullayev",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:24.125Z",
+    "last_active": "2025-03-28T12:11:24.127Z"
+  },
+  {
+    "id": 7894030736,
+    "username": "Rhmvaaa_3010",
+    "first_name": ".",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:24.129Z",
+    "last_active": "2025-03-28T12:11:24.136Z"
+  },
+  {
+    "id": 7547205169,
+    "username": null,
+    "first_name": "Asrorbek",
+    "last_name": "Maxmudov",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:24.137Z",
+    "last_active": "2025-03-28T12:11:25.637Z"
+  },
+  {
+    "id": 6578508197,
+    "username": null,
+    "first_name": "Sultonova",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.638Z",
+    "last_active": "2025-03-28T12:11:25.639Z"
+  },
+  {
+    "id": 7629566568,
+    "username": "bor1boyev_bobur",
+    "first_name": "Bobur",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.640Z",
+    "last_active": "2025-03-28T12:11:25.641Z"
+  },
+  {
+    "id": 7473685465,
+    "username": "silient_pg",
+    "first_name": "silient",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.643Z",
+    "last_active": "2025-03-28T12:11:25.650Z"
+  },
+  {
+    "id": 5299389115,
+    "username": null,
+    "first_name": "Asliddin Maxmudov",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.651Z",
+    "last_active": "2025-03-28T12:11:25.653Z"
+  },
+  {
+    "id": 6751980261,
+    "username": "nozima_sirliboyeva",
+    "first_name": "Nozima Sirliboyeva",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.653Z",
+    "last_active": "2025-03-28T12:11:25.655Z"
+  },
+  {
+    "id": 7939254237,
+    "username": "liliyam_77",
+    "first_name": "Шахинабону🖤",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.655Z",
+    "last_active": "2025-03-28T12:11:25.657Z"
+  },
+  {
+    "id": 550803378,
+    "username": null,
+    "first_name": "Даврон Разаков",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.658Z",
+    "last_active": "2025-03-28T12:11:25.684Z"
+  },
+  {
+    "id": 5686236775,
+    "username": "Gulhayo_Qahramanovna",
+    "first_name": "Gulhayo_Karimova",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.685Z",
+    "last_active": "2025-03-28T12:11:25.687Z"
+  },
+  {
+    "id": 258987139,
+    "username": "Saroy_5065",
+    "first_name": "G’ayrat",
+    "last_name": "️",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.688Z",
+    "last_active": "2025-03-28T12:11:25.695Z"
+  },
+  {
+    "id": 5726667620,
+    "username": "yasharova_i",
+    "first_name": "𝐈𝐫𝐨𝐝𝐚𝐱𝐨𝐧 𝐘𝐚𝐬𝐡𝐚𝐫𝐨𝐯𝐚",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.696Z",
+    "last_active": "2025-03-28T12:11:25.702Z"
+  },
+  {
+    "id": 7601628763,
+    "username": "Umirkulovnaa",
+    "first_name": "🌼",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.703Z",
+    "last_active": "2025-03-28T12:11:25.707Z"
+  },
+  {
+    "id": 5495434519,
+    "username": "Yourdearchuckabooo",
+    "first_name": "Sevinchxon",
+    "last_name": "Soyibjonova",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.707Z",
+    "last_active": "2025-03-28T12:11:25.710Z"
+  },
+  {
+    "id": 6936269374,
+    "username": "Talaba_BTS_CU_24",
+    "first_name": "👩‍🎓Fotima Saminova👩‍🎓",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.710Z",
+    "last_active": "2025-03-28T12:11:25.713Z"
+  },
+  {
+    "id": 7399820709,
+    "username": "Miskina_03",
+    "first_name": "نُورُ عينِي",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.714Z",
+    "last_active": "2025-03-28T12:11:25.716Z"
+  },
+  {
+    "id": 8102053063,
+    "username": "Muslima_603",
+    "first_name": "𝑀𝑢𝑠𝑙𝑖𝑚𝑎",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.716Z",
+    "last_active": "2025-03-28T12:15:09.273Z"
+  },
+  {
+    "id": 6138486967,
+    "username": "ne77aa",
+    "first_name": "ᅠ",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.722Z",
+    "last_active": "2025-03-28T12:11:25.724Z"
+  },
+  {
+    "id": 7502317940,
+    "username": "Hello_myhappiness",
+    "first_name": "🌸🌸🌸",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.725Z",
+    "last_active": "2025-03-28T12:11:25.726Z"
+  },
+  {
+    "id": 6328618481,
+    "username": null,
+    "first_name": "Ibragimova Barno",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.727Z",
+    "last_active": "2025-03-28T12:11:25.729Z"
+  },
+  {
+    "id": 1639711576,
+    "username": "Mr_Shohrux_01_03",
+    "first_name": "𝑺𝒉𝒐𝒙𝒓𝒖𝒙",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.741Z",
+    "last_active": "2025-03-28T12:11:25.744Z"
+  },
+  {
+    "id": 8076260500,
+    "username": null,
+    "first_name": "Sabina",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.744Z",
+    "last_active": "2025-03-28T12:11:25.748Z"
+  },
+  {
+    "id": 174662678,
+    "username": "Dilxumor14",
+    "first_name": "Dil",
+    "last_name": "Dilxumor",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.749Z",
+    "last_active": "2025-03-28T12:11:25.753Z"
+  },
+  {
+    "id": 6169118183,
+    "username": "On_10_02",
+    "first_name": "Nazokat Ortiqjonova",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.754Z",
+    "last_active": "2025-03-28T12:11:25.764Z"
+  },
+  {
+    "id": 7634953462,
+    "username": "shaxnozam_1112",
+    "first_name": "𝓢𝓱🤍",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.764Z",
+    "last_active": "2025-03-28T12:37:48.659Z"
+  },
+  {
+    "id": 6534007880,
+    "username": "abdurahmonova_26_06",
+    "first_name": "Abdurahmonova",
+    "last_name": "Zahro👩‍🎓",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.777Z",
+    "last_active": "2025-03-28T12:11:25.780Z"
+  },
+  {
+    "id": 1920400636,
+    "username": "RuzimboyevJurat",
+    "first_name": "Ruzimboyev Jur'at",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.780Z",
+    "last_active": "2025-03-28T12:11:25.782Z"
+  },
+  {
+    "id": 7366673710,
+    "username": null,
+    "first_name": "𝓢𝓱𝓸𝓿𝓴𝓪𝓽𝓸𝓿𝓪",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.784Z",
+    "last_active": "2025-03-28T12:11:25.785Z"
+  },
+  {
+    "id": 852956633,
+    "username": "Nurgali_Turginov",
+    "first_name": "Nurg‘ali",
+    "last_name": "Turg'inov",
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.785Z",
+    "last_active": "2025-03-28T12:11:25.788Z"
+  },
+  {
+    "id": 6393902471,
+    "username": null,
+    "first_name": "Madina Gʻofurova",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.789Z",
+    "last_active": "2025-03-28T12:15:19.353Z"
+  },
+  {
+    "id": 881679575,
+    "username": "XAN_9307",
+    "first_name": "Xasanova Aziza",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.791Z",
+    "last_active": "2025-03-28T12:11:25.792Z"
+  },
+  {
+    "id": 6809075230,
+    "username": "Sevinch_Abdumalikova",
+    "first_name": "𝑺𝒆𝒗𝒊𝒏𝒄𝒉",
+    "last_name": null,
+    "language": "uz",
+    "joined_at": "2025-03-28T12:11:25.793Z",
+    "last_active": "2025-03-28T12:11:25.794Z"
   }
 ]
