@@ -31,6 +31,58 @@ const monitoringMessages = new Map(); // Monitoring xabarlarini saqlash
 const waitingForBook = {};
 const waitingForAd = {};
 
+// Til matnlari
+const translations = {
+  uz: {
+    welcome: "Assalomu alaykum! Botimizga xush kelibsiz. Iltimos, tilni tanlang:",
+    languageSelected: "Til tanlandi!",
+    chooseLanguage: "Tilni tanlang:",
+    noPermission: "❌ Sizda bunday buyruqni bajarish huquqi yo'q.",
+    bookNotFound: "❌ Kitob topilmadi.",
+    back: "🔙 Orqaga",
+    mainMenu: "🏠 Asosiy menyu",
+    searchBook: "📚 Kitob qidirish",
+    allBooks: "📂 Barcha kitoblar",
+    settings: "⚙️ Sozlamalar",
+    contactInfo: "Adminlar bilan bog'lanish uchun:\n📞 Telefon: +998974634455\n📲 Telegram: @Sadikov001",
+    bookAdded: "✅ Kitob qo'shildi!",
+    adSent: "✅ Reklama yuborildi!",
+    adCanceled: "❌ Reklama bekor qilindi."
+  },
+  ru: {
+    welcome: "Здравствуйте! Добро пожаловать в наш бот. Пожалуйста, выберите язык:",
+    languageSelected: "Язык выбран!",
+    chooseLanguage: "Выберите язык:",
+    noPermission: "❌ У вас нет прав выполнять эту команду.",
+    bookNotFound: "❌ Книга не найдена.",
+    back: "🔙 Назад",
+    mainMenu: "🏠 Главное меню",
+    searchBook: "📚 Поиск книги",
+    allBooks: "📂 Все книги",
+    settings: "⚙️ Настройки",
+    contactInfo: "Для связи с администраторами:\n📞 Телефон: +998974634455\n📲 Telegram: @Sadikov001",
+    bookAdded: "✅ Книга добавлена!",
+    adSent: "✅ Объявление отправлено!",
+    adCanceled: "❌ Объявление отменено."
+  },
+  en: {
+    welcome: "Hello! Welcome to our bot. Please choose language:",
+    languageSelected: "Language selected!",
+    chooseLanguage: "Choose language:",
+    noPermission: "❌ You don't have permission.",
+    bookNotFound: "❌ Book not found.",
+    back: "🔙 Back",
+    mainMenu: "🏠 Main menu",
+    searchBook: "📚 Search book",
+    allBooks: "📂 All books",
+    settings: "⚙️ Settings",
+    contactInfo: "To contact the admins:\n📞 Phone: +998974634455\n📲 Telegram: @Sadikov001",
+    bookAdded: "✅ Book added!",
+    adSent: "✅ Ad sent!",
+    adCanceled: "❌ Ad canceled."
+  }
+};
+
 // Til menyusi
 const languageMenu = {
   reply_markup: {
@@ -47,9 +99,9 @@ function getMainMenu(lang) {
   return {
     reply_markup: {
       keyboard: [
-        [lang === "uz" ? "📚 Kitob qidirish" : lang === "ru" ? "📚 Поиск книги" : "📚 Search book"],
-        [lang === "uz" ? "📂 Barcha kitoblar" : lang === "ru" ? "📂 Все книги" : "📂 All books"],
-        [lang === "uz" ? "⚙️ Sozlamalar" : lang === "ru" ? "⚙️ Настройки" : "⚙️ Settings"],
+        [translations[lang].searchBook],
+        [translations[lang].allBooks],
+        [translations[lang].settings],
       ],
       resize_keyboard: true,
     },
@@ -61,8 +113,8 @@ function getBackMenu(lang) {
   return {
     reply_markup: {
       keyboard: [
-        [lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back"],
-        [lang === "uz" ? "🏠 Asosiy menyu" : lang === "ru" ? "🏠 Главное меню" : "🏠 Main menu"],
+        [translations[lang].back],
+        [translations[lang].mainMenu],
       ],
       resize_keyboard: true,
     },
@@ -122,7 +174,6 @@ function updateUserActivity(userId, action) {
   if (userIndex !== -1) {
     users[userIndex].last_active = new Date().toISOString();
     
-    // Harakatlar tarixini saqlash
     if (action) {
       if (!users[userIndex].actions) {
         users[userIndex].actions = [];
@@ -131,7 +182,7 @@ function updateUserActivity(userId, action) {
         action,
         timestamp: new Date().toISOString()
       });
-      // Faqat oxirgi 5 ta harakatni saqlash
+      
       if (users[userIndex].actions.length > 5) {
         users[userIndex].actions.shift();
       }
@@ -196,27 +247,26 @@ async function sendMonitoringInfo(action, user, additionalData = {}) {
   try {
     const userId = user.id;
     const now = new Date();
+    const userObj = users.find(u => u.id === userId) || {};
     
     let message = `👤 *Foydalanuvchi:* ${user.first_name} ${user.last_name || ''} (@${user.username || 'N/A'})\n`;
     message += `🆔 *ID:* ${userId}\n`;
-    message += `🌐 *Til:* ${user.language || 'uz'}\n`;
+    message += `📅 *Qo'shilgan:* ${new Date(userObj.joined_at || now).toLocaleDateString()}\n`;
+    message += `🌐 *Til:* ${userObj.language || 'uz'}\n`;
     message += `⏰ *So'nggi faollik:* ${now.toLocaleString()}\n\n`;
-    message += `📌 *So'nggi harakat:* ${action}\n`;
+    message += `📌 *Harakat:* ${action}\n`;
 
     if (Object.keys(additionalData).length > 0) {
       message += `\n📊 *Tafsilotlar:* \`\`\`${JSON.stringify(additionalData, null, 2)}\`\`\`\n`;
     }
 
-    // Oxirgi 3 ta harakatni ko'rsatish
-    const userObj = users.find(u => u.id === userId);
-    if (userObj?.actions?.length > 0) {
+    if (userObj.actions?.length > 0) {
       message += `\n🔄 *Oxirgi harakatlar:*`;
       userObj.actions.slice(-3).forEach((act, idx) => {
         message += `\n${idx + 1}. ${act.action} - ${new Date(act.timestamp).toLocaleTimeString()}`;
       });
     }
 
-    // Avvalgi xabarni yangilash yoki yangi xabar yuborish
     if (monitoringMessages.has(userId)) {
       try {
         const msgId = monitoringMessages.get(userId);
@@ -247,12 +297,66 @@ async function sendMonitoringInfo(action, user, additionalData = {}) {
   }
 }
 
+// Server monitoringi uchun
+const HEARTBEAT_INTERVAL = 5000; // 5 sekund
+
+function sendHeartbeat() {
+  const now = new Date().toLocaleString();
+  console.log(`❤️ Heartbeat at ${now}`);
+  
+  try {
+    monitoringBot.sendMessage(
+      MONITORING_CHAT_ID, 
+      `🟢 Server ishlayapti: ${now}\n📊 Statistikalar:\n- Foydalanuvchilar: ${users.length}\n- Kitoblar: ${books.length}\n- Reklamalar: ${ads.length}`,
+      { disable_notification: true }
+    );
+  } catch (error) {
+    console.error("Heartbeat xatosi:", error);
+  }
+}
+
+// Ma'lumotlarni zaxiralash
+function backupData() {
+  try {
+    const backupDir = path.join(__dirname, 'backups');
+    if (!fs.existsSync(backupDir)) {
+      fs.mkdirSync(backupDir);
+    }
+    
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    
+    fs.copyFileSync(
+      path.join(__dirname, 'users.json'),
+      path.join(backupDir, `users_${timestamp}.json`)
+    );
+    
+    fs.copyFileSync(
+      path.join(__dirname, 'books.json'),
+      path.join(backupDir, `books_${timestamp}.json`)
+    );
+    
+    fs.copyFileSync(
+      path.join(__dirname, 'ads.json'),
+      path.join(backupDir, `ads_${timestamp}.json`)
+    );
+    
+    console.log(`✅ Ma'lumotlar zaxiralandi: ${timestamp}`);
+  } catch (error) {
+    console.error('⛔ Zaxiralashda xato:', error);
+    monitoringBot.sendMessage(
+      MONITORING_CHAT_ID,
+      `⛔ *Zaxiralashda xato!*\n\n` +
+      `📌 Xato: ${error.message}`,
+      { parse_mode: "Markdown" }
+    );
+  }
+}
+
 // /start komandasi
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const user = msg.from;
 
-  // Yangi foydalanuvchi qo'shish
   const isNewUser = addUser({
     id: user.id,
     username: user.username,
@@ -264,22 +368,58 @@ bot.onText(/\/start/, (msg) => {
 
   if (isNewUser) {
     sendMonitoringInfo("Yangi foydalanuvchi qo'shildi", user);
-    bot.sendMessage(chatId, 
-      lang === "uz" 
-        ? "Assalomu alaykum! Botimizga xush kelibsiz. Iltimos, tilni tanlang:" 
-        : lang === "ru" 
-        ? "Здравствуйте! Добро пожаловать в наш бот. Пожалуйста, выберите язык:" 
-        : "Hello! Welcome to our bot. Please choose language:", 
-      languageMenu
-    );
+    bot.sendMessage(chatId, translations[lang].welcome, languageMenu);
   } else {
     sendMonitoringInfo("Botni qayta ishga tushirdi", user);
-    bot.sendMessage(chatId, 
-      lang === "uz" ? "Tilni tanlang:" : lang === "ru" ? "Выберите язык:" : "Choose language:", 
-      languageMenu
-    );
+    bot.sendMessage(chatId, translations[lang].chooseLanguage, languageMenu);
   }
   updateUserActivity(user.id, "Botni ishga tushirdi");
+});
+
+// /help komandasi
+bot.onText(/\/help/, (msg) => {
+  const chatId = msg.chat.id;
+  const user = users.find(u => u.id === msg.from.id);
+  const lang = user?.language || 'uz';
+  
+  const helpText = lang === "uz" 
+    ? `📚 *Kutubxona Boti Yordam Menyusi*\n\n` +
+      `/start - Botni ishga tushirish\n` +
+      `/help - Yordam menyusi\n` +
+      `/contact - Adminlar bilan bog'lanish\n` +
+      `📚 Kitob qidirish - Kitob izlash\n` +
+      `📂 Barcha kitoblar - Janr bo'yicha kitoblar\n` +
+      `⚙️ Sozlamalar - Til sozlamalari\n\n` +
+      `👨‍💻 Admin buyruqlari:\n` +
+      `/addbook - Yangi kitob qo'shish\n` +
+      `/addreklama - Reklama yuborish\n` +
+      `/users - Foydalanuvchilar ro'yxati`
+    : lang === "ru" 
+    ? `📚 *Помощь по Библиотечному Боту*\n\n` +
+      `/start - Запустить бота\n` +
+      `/help - Меню помощи\n` +
+      `/contact - Связаться с админами\n` +
+      `📚 Поиск книги - Найти книгу\n` +
+      `📂 Все книги - Книги по жанрам\n` +
+      `⚙️ Настройки - Языковые настройки\n\n` +
+      `👨‍💻 Команды админа:\n` +
+      `/addbook - Добавить книгу\n` +
+      `/addreklama - Отправить рекламу\n` +
+      `/users - Список пользователей`
+    : `📚 *Library Bot Help Menu*\n\n` +
+      `/start - Start the bot\n` +
+      `/help - Help menu\n` +
+      `/contact - Contact admins\n` +
+      `📚 Search book - Find a book\n` +
+      `📂 All books - Books by genre\n` +
+      `⚙️ Settings - Language settings\n\n` +
+      `👨‍💻 Admin commands:\n` +
+      `/addbook - Add new book\n` +
+      `/addreklama - Send advertisement\n` +
+      `/users - Users list`;
+  
+  bot.sendMessage(chatId, helpText, { parse_mode: "Markdown" });
+  updateUserActivity(msg.from.id, "Yordam menyusini ko'rdi");
 });
 
 // /contact komandasi
@@ -289,15 +429,53 @@ bot.onText(/\/contact/, (msg) => {
   const lang = user?.language || 'uz';
 
   sendMonitoringInfo("Kontakt ma'lumotlarini ko'rdi", user);
-
-  const contactMessage = lang === "uz" 
-    ? "Adminlar bilan bog'lanish uchun:\n📞 Telefon: +998974634455\n📲 Telegram: @Sadikov001"
-    : lang === "ru" 
-    ? "Для связи с администраторами:\n📞 Телефон: +998974634455\n📲 Telegram: @Sadikov001"
-    : "To contact the admins:\n📞 Phone: +998974634455\n📲 Telegram: @Sadikov001";
-
-  bot.sendMessage(chatId, contactMessage, getMainMenu(lang));
+  bot.sendMessage(chatId, translations[lang].contactInfo, getMainMenu(lang));
   updateUserActivity(msg.from.id, "Kontakt ma'lumotlari");
+});
+
+// /stats komandasi (admin uchun)
+bot.onText(/\/stats/, (msg) => {
+  const chatId = msg.chat.id;
+  const user = users.find(u => u.id === msg.from.id);
+  const lang = user?.language || 'uz';
+  
+  if (!ADMIN_IDS.includes(msg.from.id.toString())) {
+    bot.sendMessage(chatId, translations[lang].noPermission, getMainMenu(lang));
+    return;
+  }
+  
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  
+  const newUsersToday = users.filter(u => new Date(u.joined_at) >= today).length;
+  const activeUsersToday = users.filter(u => new Date(u.last_active) >= today).length;
+  
+  const statsText = lang === "uz" 
+    ? `📊 *Bot statistikasi*\n\n` +
+      `👥 Umumiy foydalanuvchilar: ${users.length}\n` +
+      `🆕 Bugun qo'shilgan: ${newUsersToday}\n` +
+      `🔄 Bugun faol: ${activeUsersToday}\n` +
+      `📚 Kitoblar: ${books.length}\n` +
+      `📢 Reklamalar: ${ads.length}\n` +
+      `⏰ Server vaqti: ${now.toLocaleString()}`
+    : lang === "ru" 
+    ? `📊 *Статистика бота*\n\n` +
+      `👥 Всего пользователей: ${users.length}\n` +
+      `🆕 Новые сегодня: ${newUsersToday}\n` +
+      `🔄 Активные сегодня: ${activeUsersToday}\n` +
+      `📚 Книги: ${books.length}\n` +
+      `📢 Рекламы: ${ads.length}\n` +
+      `⏰ Время сервера: ${now.toLocaleString()}`
+    : `📊 *Bot statistics*\n\n` +
+      `👥 Total users: ${users.length}\n` +
+      `🆕 New today: ${newUsersToday}\n` +
+      `🔄 Active today: ${activeUsersToday}\n` +
+      `📚 Books: ${books.length}\n` +
+      `📢 Ads: ${ads.length}\n` +
+      `⏰ Server time: ${now.toLocaleString()}`;
+  
+  bot.sendMessage(chatId, statsText, { parse_mode: "Markdown" });
+  updateUserActivity(msg.from.id, "Statistikani ko'rdi");
 });
 
 // /addbook komandasi (admin uchun)
@@ -307,7 +485,7 @@ bot.onText(/\/addbook/, (msg) => {
   const lang = user?.language || 'uz';
 
   if (!ADMIN_IDS.includes(msg.from.id.toString())) {
-    bot.sendMessage(chatId, lang === "uz" ? "❌ Sizda bunday buyruqni bajarish huquqi yo'q." : lang === "ru" ? "❌ У вас нет прав выполнять эту команду." : "❌ You don't have permission.", getMainMenu(lang));
+    bot.sendMessage(chatId, translations[lang].noPermission, getMainMenu(lang));
     return;
   }
 
@@ -329,7 +507,7 @@ bot.onText(/\/addreklama/, (msg) => {
   const lang = user?.language || 'uz';
 
   if (!ADMIN_IDS.includes(msg.from.id.toString())) {
-    bot.sendMessage(chatId, lang === "uz" ? "❌ Sizda bunday buyruqni bajarish huquqi yo'q." : lang === "ru" ? "❌ У вас нет прав выполнять эту команду." : "❌ You don't have permission.", getMainMenu(lang));
+    bot.sendMessage(chatId, translations[lang].noPermission, getMainMenu(lang));
     return;
   }
 
@@ -355,7 +533,7 @@ bot.onText(/\/users/, (msg) => {
   const lang = user?.language || 'uz';
 
   if (!ADMIN_IDS.includes(msg.from.id.toString())) {
-    bot.sendMessage(chatId, lang === "uz" ? "❌ Sizda bunday buyruqni bajarish huquqi yo'q." : lang === "ru" ? "❌ У вас нет прав выполнять эту команду." : "❌ You don't have permission.", getMainMenu(lang));
+    bot.sendMessage(chatId, translations[lang].noPermission, getMainMenu(lang));
     return;
   }
 
@@ -372,7 +550,6 @@ bot.onText(/\/users/, (msg) => {
     ? `👥 Количество пользователей: ${users.length}\n\n` 
     : `👥 Total users: ${users.length}\n\n`;
 
-  // Oxirgi 10 ta foydalanuvchi
   const recentUsers = users.slice(-10).reverse();
 
   recentUsers.forEach((user, index) => {
@@ -409,39 +586,39 @@ bot.on("message", async (msg) => {
   if (!text) return;
 
   // Monitoring uchun harakatlarni yuborish
-  if (text === (lang === "uz" ? "📚 Kitob qidirish" : lang === "ru" ? "📚 Поиск книги" : "📚 Search book")) {
+  if (text === translations[lang].searchBook) {
     sendMonitoringInfo("Kitob qidirish bo'limiga kirdi", user);
-  } else if (text === (lang === "uz" ? "📂 Barcha kitoblar" : lang === "ru" ? "📂 Все книги" : "📂 All books")) {
+  } else if (text === translations[lang].allBooks) {
     sendMonitoringInfo("Barcha kitoblar bo'limiga kirdi", user);
-  } else if (text === (lang === "uz" ? "⚙️ Sozlamalar" : lang === "ru" ? "⚙️ Настройки" : "⚙️ Settings")) {
+  } else if (text === translations[lang].settings) {
     sendMonitoringInfo("Sozlamalar bo'limiga kirdi", user);
   } else if (text && !text.startsWith('/')) {
     sendMonitoringInfo("Kitob qidiruv so'rovi", user, { sorov: text });
   }
 
   // Orqaga tugmasi
-  if (text === (lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back")) {
-    bot.sendMessage(chatId, lang === "uz" ? "Orqaga qaytildi" : lang === "ru" ? "Назад" : "Back", getMainMenu(lang));
+  if (text === translations[lang].back) {
+    bot.sendMessage(chatId, translations[lang].back, getMainMenu(lang));
     updateUserActivity(msg.from.id, "Orqaga qaytdi");
     return;
   }
 
   // Asosiy menyu tugmasi
-  if (text === (lang === "uz" ? "🏠 Asosiy menyu" : lang === "ru" ? "🏠 Главное меню" : "🏠 Main menu")) {
-    bot.sendMessage(chatId, lang === "uz" ? "Asosiy menyu" : lang === "ru" ? "Главное меню" : "Main menu", getMainMenu(lang));
+  if (text === translations[lang].mainMenu) {
+    bot.sendMessage(chatId, translations[lang].mainMenu, getMainMenu(lang));
     updateUserActivity(msg.from.id, "Asosiy menyuga qaytdi");
     return;
   }
 
   // Kitob qidirish
-  if (text === (lang === "uz" ? "📚 Kitob qidirish" : lang === "ru" ? "📚 Поиск книги" : "📚 Search book")) {
+  if (text === translations[lang].searchBook) {
     bot.sendMessage(chatId, lang === "uz" ? "📚 Kitob nomi, muallif yoki janr bo'yicha qidiring." : lang === "ru" ? "📚 Введите название книги, автора или жанр." : "📚 Search by name, author or genre.", getBackMenu(lang));
     updateUserActivity(msg.from.id, "Kitob qidirishni boshladi");
     return;
   }
 
   // Barcha kitoblar
-  if (text === (lang === "uz" ? "📂 Barcha kitoblar" : lang === "ru" ? "📂 Все книги" : "📂 All books")) {
+  if (text === translations[lang].allBooks) {
     bot.sendMessage(chatId, lang === "uz" ? "Janrni tanlang:" : lang === "ru" ? "Выберите жанр:" : "Choose genre:", {
       reply_markup: {
         inline_keyboard: [
@@ -451,7 +628,7 @@ bot.on("message", async (msg) => {
           [{ text: "Shaxsiy Rivojlanish", callback_data: "genre_Shaxsiy Rivojlanish" }],
           [{ text: "Detektiv", callback_data: "genre_Detektiv" }],
           [{ text: lang === "uz" ? "Barchasi" : lang === "ru" ? "Все" : "All", callback_data: "genre_all" }],
-          [{ text: lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back", callback_data: "back_to_main" }],
+          [{ text: translations[lang].back, callback_data: "back_to_main" }],
         ],
       },
     });
@@ -487,7 +664,7 @@ bot.on("message", async (msg) => {
               [{ text: "Darslik", callback_data: "book_genre_Darslik" }, { text: "Boshqa", callback_data: "book_genre_Boshqa" }],
               [{ text: "Shaxsiy Rivojlanish", callback_data: "book_genre_Shaxsiy Rivojlanish" }],
               [{ text: "Detektiv", callback_data: "book_genre_Detektiv" }],
-              [{ text: lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back", callback_data: "back_to_main" }],
+              [{ text: translations[lang].back, callback_data: "back_to_main" }],
             ],
           },
         }
@@ -538,7 +715,7 @@ bot.on("message", async (msg) => {
             inline_keyboard: [
               [{ text: lang === "uz" ? "✅ Tasdiqlash" : lang === "ru" ? "✅ Подтвердить" : "✅ Confirm", callback_data: "confirm_ad" }],
               [{ text: lang === "uz" ? "❌ Bekor qilish" : lang === "ru" ? "❌ Отменить" : "❌ Cancel", callback_data: "cancel_ad" }],
-              [{ text: lang === "uz" ? "🔙 Orqaga" : lang === "ru" ? "🔙 Назад" : "🔙 Back", callback_data: "back_to_main" }],
+              [{ text: translations[lang].back, callback_data: "back_to_main" }],
             ],
           },
         }
@@ -599,7 +776,7 @@ bot.on("message", async (msg) => {
     } else {
       bot.sendMessage(
         chatId, 
-        lang === "uz" ? "❌ Kitob topilmadi." : lang === "ru" ? "❌ Книга не найдена." : "❌ Book not found.",
+        translations[lang].bookNotFound,
         getBackMenu(lang)
       );
     }
@@ -609,6 +786,7 @@ bot.on("message", async (msg) => {
 
 // Fayllarni qayta ishlash
 bot.on("document", (msg) => processFile(msg, "document"));
+
 bot.on("photo", (msg) => processFile(msg, "photo"));
 bot.on("video", (msg) => processFile(msg, "video"));
 bot.on("audio", (msg) => processFile(msg, "audio"));

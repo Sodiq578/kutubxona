@@ -18,24 +18,28 @@
     "join_date": "2025-03-25T12:33:49.192Z",
     "last_activity": "2025-03-25T14:14:25.894Z",
     "message_count": 55,
-    "last_active": "2025-03-28T23:15:54.976Z",
+    "last_active": "2025-03-29T12:46:40.101Z",
     "language": "uz",
     "actions": [
       {
         "action": "Botni ishga tushirdi",
-        "timestamp": "2025-03-28T23:14:59.356Z"
+        "timestamp": "2025-03-29T12:13:52.455Z"
       },
       {
-        "action": "Tilni uz ga o'zgartirdi",
-        "timestamp": "2025-03-28T23:15:03.458Z"
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-29T12:13:52.457Z"
       },
       {
-        "action": "\"users.json\" bo'yicha qidiruv",
-        "timestamp": "2025-03-28T23:15:08.592Z"
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-29T12:13:52.458Z"
       },
       {
-        "action": "\"6\" bo'yicha qidiruv",
-        "timestamp": "2025-03-28T23:15:54.976Z"
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-29T12:13:52.460Z"
+      },
+      {
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-29T12:46:40.102Z"
       }
     ]
   },
@@ -46,27 +50,27 @@
     "last_name": null,
     "language": "uz",
     "joined_at": "2025-03-26T15:42:54.406Z",
-    "last_active": "2025-03-28T23:16:23.115Z",
+    "last_active": "2025-03-29T13:22:02.467Z",
     "actions": [
       {
-        "action": "\"0\" bo'yicha qidiruv",
-        "timestamp": "2025-03-28T23:14:13.452Z"
+        "action": "Tilni uz ga o'zgartirdi",
+        "timestamp": "2025-03-29T12:34:10.809Z"
       },
       {
-        "action": "\"10\" bo'yicha qidiruv",
-        "timestamp": "2025-03-28T23:14:14.937Z"
+        "action": "\"7\" bo'yicha qidiruv",
+        "timestamp": "2025-03-29T12:42:23.676Z"
       },
       {
-        "action": "\"/addbook\" bo'yicha qidiruv",
-        "timestamp": "2025-03-28T23:16:14.124Z"
+        "action": "Botni ishga tushirdi",
+        "timestamp": "2025-03-29T13:21:30.217Z"
       },
       {
-        "action": "Kitob qo'shish boshladi",
-        "timestamp": "2025-03-28T23:16:14.126Z"
+        "action": "Tilni uz ga o'zgartirdi",
+        "timestamp": "2025-03-29T13:21:36.406Z"
       },
       {
-        "action": "Orqaga qaytdi",
-        "timestamp": "2025-03-28T23:16:23.115Z"
+        "action": "\"7\" bo'yicha qidiruv",
+        "timestamp": "2025-03-29T13:22:02.467Z"
       }
     ]
   },
@@ -203,7 +207,29 @@
     "last_name": null,
     "language": "uz",
     "joined_at": "2025-03-28T12:11:25.651Z",
-    "last_active": "2025-03-28T12:11:25.653Z"
+    "last_active": "2025-03-29T12:42:12.657Z",
+    "actions": [
+      {
+        "action": "\"⚙️ Sozlamalar\" bo'yicha qidiruv",
+        "timestamp": "2025-03-29T12:13:52.453Z"
+      },
+      {
+        "action": "Podkast janridagi kitoblarni ko'rdi",
+        "timestamp": "2025-03-29T12:41:28.433Z"
+      },
+      {
+        "action": "all janridagi kitoblarni ko'rdi",
+        "timestamp": "2025-03-29T12:41:29.138Z"
+      },
+      {
+        "action": "Ilmiy janridagi kitoblarni ko'rdi",
+        "timestamp": "2025-03-29T12:41:58.190Z"
+      },
+      {
+        "action": "\"7\" bo'yicha qidiruv",
+        "timestamp": "2025-03-29T12:42:12.657Z"
+      }
+    ]
   },
   {
     "id": 6751980261,
