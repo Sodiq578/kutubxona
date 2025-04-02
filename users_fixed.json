@@ -32,31 +32,30 @@
     "join_date": "2025-03-25T12:33:49.192Z",
     "last_activity": "2025-03-25T14:14:25.894Z",
     "message_count": 55,
-    "last_active": "2025-04-02T19:12:11.907Z",
+    "last_active": "2025-03-31T14:21:45.243Z",
     "language": "uz",
     "actions": [
       {
-        "action": "Viewed 🌐 Jahon adabiyoti genre books",
-        "timestamp": "2025-04-01T00:26:05.349Z"
+        "action": "Reklama qo'shish boshladi",
+        "timestamp": "2025-03-31T14:13:32.153Z"
       },
       {
-        "action": "Viewed Boshqa genre books",
-        "timestamp": "2025-04-01T00:26:08.246Z"
+        "action": "Reklama faylini yubordi",
+        "timestamp": "2025-03-31T14:21:26.387Z"
       },
       {
-        "action": "Viewed all books",
-        "timestamp": "2025-04-01T00:32:06.922Z"
+        "action": "Reklama matnini kiritdi",
+        "timestamp": "2025-03-31T14:21:34.070Z"
       },
       {
-        "action": "Viewed Badiiy genre books",
-        "timestamp": "2025-04-01T00:32:08.839Z"
+        "action": "Reklamani tasdiqladi",
+        "timestamp": "2025-03-31T14:21:44.706Z"
       },
       {
-        "action": "Started the bot",
-        "timestamp": "2025-04-02T19:12:11.909Z"
+        "action": "Reklama olindi",
+        "timestamp": "2025-03-31T14:21:45.243Z"
       }
-    ],
-    "subscribed": true
+    ]
   },
   {
     "id": 7412640853,
@@ -65,135 +64,97 @@
     "last_name": null,
     "language": "uz",
     "joined_at": "2025-03-26T15:42:54.406Z",
-    "last_active": "2025-04-02T20:17:55.730Z",
+    "last_active": "2025-03-31T17:09:07.191Z",
     "actions": [
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:47:49.379Z"
+        "action": "Reklamani tasdiqladi",
+        "timestamp": "2025-03-31T11:55:12.120Z"
       },
       {
-        "action": "Searched for \"Primqul Qodirov\"",
-        "timestamp": "2025-03-31T23:48:12.473Z"
+        "action": "Reklama olindi",
+        "timestamp": "2025-03-31T11:55:12.653Z"
       },
       {
-        "action": "Searched for \"/addbook\"",
-        "timestamp": "2025-03-31T23:48:55.987Z"
+        "action": "Reklama olindi",
+        "timestamp": "2025-03-31T14:21:45.559Z"
       },
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:48:55.990Z"
+        "action": "\"/addbook\" bo'yicha qidiruv",
+        "timestamp": "2025-03-31T14:35:14.823Z"
       },
       {
-        "action": "Searched for \"Audio kitoblar\"",
-        "timestamp": "2025-03-31T23:50:20.745Z"
+        "action": "Kitob qo'shish boshladi",
+        "timestamp": "2025-03-31T14:35:14.826Z"
       },
       {
-        "action": "Searched for \"/addbook\"",
-        "timestamp": "2025-03-31T23:52:21.480Z"
+        "action": "\"O'lmas umarbekov\" bo'yicha qidiruv",
+        "timestamp": "2025-03-31T17:04:54.960Z"
       },
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:52:21.481Z"
+        "action": "\"/addbook\" bo'yicha qidiruv",
+        "timestamp": "2025-03-31T17:05:06.284Z"
       },
       {
-        "action": "Searched for \"Audi kitoblar Adio varyant Audio badiy asarlar\"",
-        "timestamp": "2025-03-31T23:52:53.955Z"
+        "action": "Kitob qo'shish boshladi",
+        "timestamp": "2025-03-31T17:05:06.288Z"
       },
       {
-        "action": "Searched for \"/addbook\"",
-        "timestamp": "2025-03-31T23:54:27.892Z"
+        "action": "Kitob nomini kiritdi",
+        "timestamp": "2025-03-31T17:05:10.824Z"
       },
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:54:27.897Z"
+        "action": "Kitob muallifini kiritdi",
+        "timestamp": "2025-03-31T17:05:17.161Z"
       },
       {
-        "action": "Searched for \"Audi kitoblar Adio varyant Audio badiy asarlar\"",
-        "timestamp": "2025-03-31T23:54:47.832Z"
+        "action": "Kitob janrini tanladi",
+        "timestamp": "2025-03-31T17:05:45.561Z"
       },
       {
-        "action": "Searched for \"/addbook\"",
-        "timestamp": "2025-03-31T23:56:43.155Z"
+        "action": "Kitob faylini yubordi",
+        "timestamp": "2025-03-31T17:06:13.044Z"
       },
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:56:43.158Z"
+        "action": "Kitob faylini yubordi",
+        "timestamp": "2025-03-31T17:06:22.227Z"
       },
       {
-        "action": "Searched for \"Hikoyalar\"",
-        "timestamp": "2025-03-31T23:56:49.963Z"
+        "action": "\"/addbook\" bo'yicha qidiruv",
+        "timestamp": "2025-03-31T17:06:38.853Z"
       },
       {
-        "action": "Searched for \"/addbook\"",
-        "timestamp": "2025-03-31T23:58:06.864Z"
+        "action": "Kitob qo'shish boshladi",
+        "timestamp": "2025-03-31T17:06:38.858Z"
       },
       {
-        "action": "Started adding book",
-        "timestamp": "2025-03-31T23:58:06.868Z"
+        "action": "Kitob nomini kiritdi",
+        "timestamp": "2025-03-31T17:07:36.917Z"
       },
       {
-        "action": "Searched for \"Audi kitoblar Adio varyant Audio badiy asarlar\"",
-        "timestamp": "2025-03-31T23:58:32.983Z"
+        "action": "Kitob muallifini kiritdi",
+        "timestamp": "2025-03-31T17:07:45.547Z"
       },
       {
-        "action": "Viewed all books",
-        "timestamp": "2025-03-31T23:59:42.939Z"
+        "action": "Kitob janrini tanladi",
+        "timestamp": "2025-03-31T17:07:47.893Z"
       },
       {
-        "action": "Viewed all genre books",
-        "timestamp": "2025-03-31T23:59:50.650Z"
+        "action": "Kitob faylini yubordi",
+        "timestamp": "2025-03-31T17:08:23.191Z"
       },
       {
-        "action": "Viewed Detektiv genre books",
-        "timestamp": "2025-03-31T23:59:56.785Z"
+        "action": "Kitob faylini yubordi",
+        "timestamp": "2025-03-31T17:09:02.805Z"
       },
       {
-        "action": "Viewed Badiiy genre books",
-        "timestamp": "2025-03-31T23:59:58.587Z"
-      },
-      {
-        "action": "Viewed Audio Dars genre books",
-        "timestamp": "2025-04-01T00:00:00.901Z"
-      },
-      {
-        "action": "Started the bot",
-        "timestamp": "2025-04-01T00:00:19.412Z"
-      },
-      {
-        "action": "Viewed all books",
-        "timestamp": "2025-04-01T00:00:22.458Z"
-      },
-      {
-        "action": "Viewed Audio Dars genre books",
-        "timestamp": "2025-04-01T00:00:26.122Z"
-      },
-      {
-        "action": "Started the bot",
-        "timestamp": "2025-04-01T00:02:33.860Z"
-      },
-      {
-        "action": "Viewed all books",
-        "timestamp": "2025-04-01T00:02:37.738Z"
-      },
-      {
-        "action": "Viewed Ilmiy genre books",
-        "timestamp": "2025-04-01T00:02:41.989Z"
-      },
-      {
-        "action": "Started the bot",
-        "timestamp": "2025-04-01T00:19:28.956Z"
-      },
-      {
-        "action": "Started adding book",
-        "timestamp": "2025-04-01T00:19:51.394Z"
+        "action": "\"10\" bo'yicha qidiruv",
+        "timestamp": "2025-03-31T17:09:07.191Z"
       }
     ],
     "last_activity": "2025-03-31T01:21:32.000Z",
     "total_actions": 5,
     "oxirgiFaollik": "2025-03-31T01:25:21.986Z",
-    "harakatlarSoni": null,
-    "is_subscribed": true,
-    "subscribed": true
+    "harakatlarSoni": null
   },
   {
     "id": 7538288028,
@@ -1097,126 +1058,5 @@
         "timestamp": "2025-03-31T14:21:52.164Z"
       }
     ]
-  },
-  {
-    "id": 5344285066,
-    "username": null,
-    "first_name": "Зиннат 💎",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-01T07:07:07.972Z",
-    "last_active": "2025-04-01T07:07:07.988Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 6726789893,
-    "username": null,
-    "first_name": "𝒦 🌸",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.200Z",
-    "last_active": "2025-04-02T14:41:22.212Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 6746257744,
-    "username": null,
-    "first_name": "Madina",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.293Z",
-    "last_active": "2025-04-02T14:41:22.293Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 6997230175,
-    "username": "Katsumi_sun_o8",
-    "first_name": "Aliakbarovna_04",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.294Z",
-    "last_active": "2025-04-02T14:41:22.294Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 6554218321,
-    "username": null,
-    "first_name": "🌸Gulchehra🌸",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.297Z",
-    "last_active": "2025-04-02T14:41:22.297Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 7490161665,
-    "username": "Diyorbek_0517",
-    "first_name": "Diyorbek",
-    "last_name": "Nematov",
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.297Z",
-    "last_active": "2025-04-02T14:41:22.297Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 1283180479,
-    "username": "Morze_02",
-    "first_name": "Xusanboyeva S",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.298Z",
-    "last_active": "2025-04-02T14:41:22.298Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 8035589424,
-    "username": "akhmedov124",
-    "first_name": "Хабиб",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T14:41:22.299Z",
-    "last_active": "2025-04-02T14:41:22.299Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 2113209541,
-    "username": null,
-    "first_name": "Oʻtayeva Nazira Choriyevna",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T16:35:29.426Z",
-    "last_active": "2025-04-02T16:35:29.459Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 6903252659,
-    "username": null,
-    "first_name": "Baxtigul",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T16:35:29.644Z",
-    "last_active": "2025-04-02T16:35:29.644Z",
-    "actions": [],
-    "subscribed": false
-  },
-  {
-    "id": 2126085173,
-    "username": "Bozorovagulshoda",
-    "first_name": "ULUG'BEK",
-    "last_name": null,
-    "language": "uz",
-    "joined_at": "2025-04-02T17:41:10.442Z",
-    "last_active": "2025-04-02T17:41:10.443Z",
-    "actions": [],
-    "subscribed": false
   }
 ]
