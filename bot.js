@@ -8,10 +8,10 @@ const books = require("./books.json");
 const ads = require("./ads.json");
 
 // Konfiguratsiya
-const TOKEN = process.env.BOT_TOKEN;
-const MONITORING_TOKEN = process.env.MONITORING_BOT_TOKEN;
-const ADMIN_IDS = process.env.ADMIN_ID.split(",").map((id) => id.trim());
-const MONITORING_CHAT_ID = process.env.MONITORING_CHAT_ID;
+const TOKEN = process.env.BOT_TOKEN || "";
+const MONITORING_TOKEN = process.env.MONITORING_BOT_TOKEN || "";
+const ADMIN_IDS = process.env.ADMIN_ID ? process.env.ADMIN_ID.split(",").map((id) => id.trim()) : [];
+const MONITORING_CHAT_ID = process.env.MONITORING_CHAT_ID || "";
 const REQUIRED_CHANNELS = [
   { id: "@ElektronkitoblarElektornkutubxon", link: "https://t.me/ElektronkitoblarElektornkutubxon" },
   { id: "@KinolarTarjimaFantastikYangiKino", link: "https://t.me/KinolarTarjimaFantastikYangiKino" }
@@ -1379,45 +1379,46 @@ monitoringBot.onText(/\/start/, (msg) => {
 });
 
 // Server monitoring
-const HEARTBEAT_INTERVAL = 300000; // 5 daqiqa
 
+
+const HEARTBEAT_INTERVAL = 24 * 60 * 60 * 1000; // 24 soat
 async function sendHeartbeat() {
   const now = new Date().toLocaleString();
-  console.log(`❤️ Heartbeat at ${now}`);
-  
+  console.log(`❤️ Yurak urishi: ${now}`);
+
   try {
-    // Yangi foydalanuvchilar (oxirgi 24 soat)
+    // Yangi foydalanuvchilar (oxirgi 24 soat ichida)
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const newUsers = users.filter(user => new Date(user.joined_at) > oneDayAgo);
-    
-    // Faol foydalanuvchilar (oxirgi 24 soat)
+
+    // Faol foydalanuvchilar (oxirgi 24 soat ichida)
     const activeUsers = users.filter(user => new Date(user.last_active) > oneDayAgo);
-    
+
     // A'zo bo'lgan foydalanuvchilar
     const subscribedUsers = users.filter(user => user.subscribed);
-    
+
     // Foydalanuvchilar ro'yxatini tayyorlash
-    let usersList = "👥 Recent users:\n";
+    let usersList = "👥 So'nggi foydalanuvchilar:\n";
     const recentUsers = users.slice(-5).reverse();
-    
+
     recentUsers.forEach((user, index) => {
       usersList += `\n${index + 1}. ${user.first_name} ${user.last_name || ''}\n`;
       usersList += `🆔 ID: ${user.id}\n`;
-      usersList += `📅 Joined: ${new Date(user.joined_at).toLocaleString()}\n`;
-      usersList += `✅ Subscribed: ${user.subscribed ? 'Yes' : 'No'}\n`;
+      usersList += `📅 Qoʻshilgan: ${new Date(user.joined_at).toLocaleString()}\n`;
+      usersList += `✅ Aʼzo: ${user.subscribed ? 'Ha' : 'Yoʻq'}\n`;
     });
-    
-    // Xabar kontenti
-    const message = `🟢 Server running: ${now}\n\n` +
-      `📊 Statistics:\n` +
-      `- Users: ${users.length}\n` +
-      `- Subscribed: ${subscribedUsers.length}\n` +
-      `- New users (24h): ${newUsers.length}\n` +
-      `- Active users (24h): ${activeUsers.length}\n` +
-      `- Books: ${books.length}\n` +
-      `- Ads: ${ads.length}\n\n` +
+
+    // Xabar matni
+    const message = `🟢 Server ishlayapti: ${now}\n\n` +
+      `📊 Statistika:\n` +
+      `- Foydalanuvchilar: ${users.length}\n` +
+      `- Aʼzo boʻlganlar: ${subscribedUsers.length}\n` +
+      `- Yangi foydalanuvchilar (24 soat): ${newUsers.length}\n` +
+      `- Faol foydalanuvchilar (24 soat): ${activeUsers.length}\n` +
+      `- Kitoblar soni: ${books.length}\n` +
+      `- Reklamalar soni: ${ads.length}\n\n` +
       `${usersList}`;
-    
+
     await monitoringBot.sendMessage(
       MONITORING_CHAT_ID, 
       message,
@@ -1427,14 +1428,15 @@ async function sendHeartbeat() {
       }
     );
   } catch (error) {
-    console.error("Heartbeat error:", error);
+    console.error("Yurak urishi xatosi:", error);
     await monitoringBot.sendMessage(
       MONITORING_CHAT_ID,
-      `⚠️ Heartbeat error: ${error.message}`,
+      `⚠️ Yurak urishi xatosi: ${error.message}`,
       { disable_notification: true }
     );
   }
 }
+
 
 // Ma'lumotlarni zaxiralash
 function backupData() {
