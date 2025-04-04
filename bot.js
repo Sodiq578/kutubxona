@@ -46,112 +46,157 @@ const waitingForAd = {};
 // Tarjimalar
 const translations = {
   uz: {
-    welcome: "Assalomu alaykum! Kitoblar botimizga xush kelibsiz. Quyidagi menyulardan foydalaning:",
-    languageSelected: "Til tanlandi!",
-    chooseLanguage: "Tilni tanlang:",
-    noPermission: "❌ Sizda bunday buyruqni bajarish huquqi yo'q.",
-    bookNotFound: "❌ Kitob topilmadi.",
-    back: "🔙 Orqaga",
-    mainMenu: "🏠 Asosiy menyu",
-    searchBook: "📚 Kitob qidirish",
-    allBooks: "📂 Barcha kitoblar",
+    // 👋 Salomlashuv va asosiy menyu
+    welcome: "👋 Assalomu alaykum! 📚 Kitoblar dunyosiga xush kelibsiz!\n\n🛎 Botimiz orqali siz:\n🔍 Kitob qidirishingiz\n📥 Yuklab olishingiz\n📚 Kutubxonangizni boshqarishingiz mumkin\n\n👇 Quyidagi menyulardan foydalaning:",
+    mainMenu: "🏠 Bosh menyu",
+    back: "🔙 Orqaga qaytish",
+    
+    // 🔍 Qidiruv bo'limi
+    searchBook: "🔍 Kitob qidirish",
+    bookNotFound: "❌ Kitob topilmadi!\n\n❗️ Sabablari:\n1️⃣ Noto'g'ri nom kiritilgan (masalan: \"Otkan kunlar\" o'rniga \"O'tkan kunlar\")\n2️⃣ Botda bu kitob mavjud emas\n3️⃣ Lotin yoki Kirill alifbosida xato\n\n💡 Qayta urinib ko'ring yoki admin @Sadikov001 ga murojaat qiling",
+    allBooks: "📚 Barcha kitoblar",
+    
+    // ⚙️ Sozlamalar
     settings: "⚙️ Sozlamalar",
-    contactInfo: "Adminlar bilan bog'lanish uchun:\n📞 Telefon: +998974634455\n📲 Telegram: @Sadikov001",
-    bookAdded: "✅ Kitob qo'shildi!",
-    adSent: "✅ Reklama yuborildi!",
-    adCanceled: "❌ Reklama bekor qilindi.",
-    addMethod: "Kitob qo'shish usulini tanlang:",
-    manualEntry: "📝 Qo'lda kiritish",
-    autoEntry: "📂 Fayl nomidan olish",
-    enterBookName: "📖 Kitob nomini kiriting:",
-    enterAuthor: "✍️ Muallif nomini kiriting:",
-    sendCover: "🖼 Kitob uchun rasm yuboring:",
-    sendFiles: "📄 Kitob fayllarini yuboring (PDF, EPUB, etc.):",
-    fileReceived: "📄 Fayl qabul qilindi:",
-    moreFiles: "Yana fayl yuborishingiz mumkin yoki \"Tayyor\" tugmasini bosing",
-    chooseGenre: "📂 Janrni tanlang:",
-    booksAdded: "✅ {count} ta kitob qo'shildi!\n👤 Muallif: {author}\n📂 Janr: {genre}",
-    noFiles: "❌ Hech qanday fayl yuborilmadi!",
     changeLanguage: "🌐 Tilni o'zgartirish",
-    languageChanged: "✅ Til muvaffaqiyatli o'zgartirildi!",
-    notSubscribed: "⚠️ Botdan foydalanish uchun quyidagi kanallarga a'zo bo'lishingiz kerak:",
-    checkSubscription: "✅ A'zolikni tekshirish",
-    subscribed: "✅ Siz kanal(lar)ga a'zo bo'lgansiz! Endi botdan foydalanishingiz mumkin.",
-    stillNotSubscribed: "❌ Siz hali kanal(lar)ga a'zo bo'lmagansiz. Iltimos, a'zo bo'ling va \"A'zolikni tekshirish\" tugmasini bosing.",
-    author: "Muallif",
-    genre: "Janr"
+    languageChanged: "✅ Til muvaffaqiyatli o'zgardi!",
+    chooseLanguage: "🗣 Tilni tanlang:",
+    languageSelected: "✅ Til tanlandi!",
+    
+    // 🔐 Admin funktsiyalari
+    noPermission: "⛔️ Sizda ruxsat yo'q!",
+    bookAdded: "✅ Kitob qo'shildi! 📖",
+    booksAdded: "✅ {count} ta kitob qo'shildi!\n✍️ Muallif: {author}\n🏷 Janr: {genre}",
+    adSent: "📢 Reklama yuborildi! ✅",
+    adCanceled: "❌ Reklama bekor qilindi.",
+    
+    // 📥 Kitob qo'shish
+    addMethod: "📥 Kitob qo'shish usuli:",
+    manualEntry: "✍️ Qo'lda kiritish",
+    autoEntry: "📂 Fayldan olish",
+    enterBookName: "📖 Kitob nomini kiriting:\n\n📌 Misol: \"O'tkan kunlar\"",
+    enterAuthor: "✍️ Muallifni kiriting:\n\n📌 Misol: \"Abdulla Qodiriy\"",
+    sendCover: "🖼 Kitob muqovasini yuboring:\n\n📸 Format: JPG/PNG\n⚖️ Hajm: 2MB gacha",
+    sendFiles: "📄 Kitob fayllarini yuboring:\n\n📂 Qabul qilinadigan formatlar:\n✅ PDF\n✅ EPUB\n✅ DOCX\n\n⚖️ Maksimal hajm: 50MB",
+    fileReceived: "📥 Fayl qabul qilindi: {filename}",
+    moreFiles: "🔄 Yana fayl yuborishingiz mumkin yoki \"✅ Tayyor\" tugmasini bosing",
+    chooseGenre: "📂 Janrni tanlang:",
+    noFiles: "❌ Fayl yuborilmadi!",
+    
+    // 📞 Bog'lanish
+    contactInfo: "📞 Bog'lanish uchun:\n\n📱 Telefon: +998974634455\n✉️ Telegram: @Sadikov001\n\n⏰ Ish vaqti: 09:00-18:00",
+    
+    // 📢 Obuna bo'lish
+    notSubscribed: "⚠️ Botdan foydalanish uchun kanal(lar)ga obuna bo'ling:",
+    checkSubscription: "✅ Obunani tekshirish",
+    subscribed: "🎉 Obuna bo'ldingiz! Endi botdan to'liq foydalanishingiz mumkin.",
+    stillNotSubscribed: "❌ Siz hali obuna bo'lmagansiz. Iltimos, kanal(lar)ga obuna bo'ling va \"✅ Obunani tekshirish\" tugmasini bosing.",
+    
+    // 📌 Metadata
+    author: "✍️ Muallif",
+    genre: "🏷 Janr"
   },
   ru: {
-    welcome: "Добро пожаловать в бота с книгами! Пожалуйста, используйте меню ниже:",
-    languageSelected: "Язык выбран!",
-    chooseLanguage: "Выберите язык:",
-    noPermission: "❌ У вас нет прав для выполнения этой команды.",
-    bookNotFound: "❌ Книга не найдена.",
-    back: "🔙 Назад",
+    // 👋 Приветствие и главное меню
+    welcome: "👋 Добро пожаловать в мир книг! 📚\n\n🛎 С нашим ботом вы можете:\n🔍 Искать книги\n📥 Скачивать\n📚 Управлять своей библиотекой\n\n👇 Используйте меню ниже:",
     mainMenu: "🏠 Главное меню",
-    searchBook: "📚 Поиск книги",
-    allBooks: "📂 Все книги",
+    back: "🔙 Назад",
+    
+    // 🔍 Поиск
+    searchBook: "🔍 Поиск книги",
+    bookNotFound: "❌ Книга не найдена!\n\n❗️ Возможные причины:\n1️⃣ Ошибка в названии\n2️⃣ Книга отсутствует в базе\n3️⃣ Неправильная раскладка\n\n💡 Попробуйте еще раз или свяжитесь с админом @Sadikov001",
+    allBooks: "📚 Все книги",
+    
+    // ⚙️ Настройки
     settings: "⚙️ Настройки",
-    contactInfo: "Для связи с администраторами:\n📞 Телефон: +998974634455\n📲 Telegram: @Sadikov001",
-    bookAdded: "✅ Книга добавлена!",
-    adSent: "✅ Реклама отправлена!",
+    changeLanguage: "🌐 Сменить язык",
+    languageChanged: "✅ Язык изменен!",
+    chooseLanguage: "🗣 Выберите язык:",
+    languageSelected: "✅ Язык выбран!",
+    
+    // 🔐 Админ-функции
+    noPermission: "⛔️ Нет доступа!",
+    bookAdded: "✅ Книга добавлена! 📖",
+    booksAdded: "✅ Добавлено {count} книг!\n✍️ Автор: {author}\n🏷 Жанр: {genre}",
+    adSent: "📢 Реклама отправлена! ✅",
     adCanceled: "❌ Реклама отменена.",
-    addMethod: "Выберите способ добавления книги:",
-    manualEntry: "📝 Ручной ввод",
-    autoEntry: "📂 Из имени файла",
-    enterBookName: "📖 Введите название книги:",
-    enterAuthor: "✍️ Введите имя автора:",
-    sendCover: "🖼 Отправьте обложку для книги:",
-    sendFiles: "📄 Отправьте файлы книги (PDF, EPUB и т.д.):",
-    fileReceived: "📄 Файл получен:",
-    moreFiles: "Вы можете отправить еще файлы или нажать кнопку \"Готово\"",
+    
+    // 📥 Добавление книг
+    addMethod: "📥 Способ добавления:",
+    manualEntry: "✍️ Вручную",
+    autoEntry: "📂 Из файла",
+    enterBookName: "📖 Введите название:\n\n📌 Пример: \"Преступление и наказание\"",
+    enterAuthor: "✍️ Введите автора:\n\n📌 Пример: \"Фёдор Достоевский\"",
+    sendCover: "🖼 Отправьте обложку:\n\n📸 Формат: JPG/PNG\n⚖️ Размер: до 2MB",
+    sendFiles: "📄 Отправьте файлы книги:\n\n📂 Форматы:\n✅ PDF\n✅ EPUB\n✅ DOCX\n\n⚖️ Макс. размер: 50MB",
+    fileReceived: "📥 Файл получен: {filename}",
+    moreFiles: "🔄 Можно отправить еще или нажать \"✅ Готово\"",
     chooseGenre: "📂 Выберите жанр:",
-    booksAdded: "✅ Добавлено {count} книг!\n👤 Автор: {author}\n📂 Жанр: {genre}",
     noFiles: "❌ Файлы не отправлены!",
-    changeLanguage: "🌐 Изменить язык",
-    languageChanged: "✅ Язык успешно изменен!",
-    notSubscribed: "⚠️ Для использования бота необходимо подписаться на следующие каналы:",
+    
+    // 📞 Контакты
+    contactInfo: "📞 Контакты:\n\n📱 Телефон: +998974634455\n✉️ Telegram: @Sadikov001\n\n⏰ Часы работы: 09:00-18:00",
+    
+    // 📢 Подписка
+    notSubscribed: "⚠️ Для использования бота подпишитесь на канал(ы):",
     checkSubscription: "✅ Проверить подписку",
-    subscribed: "✅ Вы подписаны на канал(ы)! Теперь вы можете использовать бота.",
-    stillNotSubscribed: "❌ Вы еще не подписались на канал(ы). Пожалуйста, подпишитесь и нажмите кнопку \"Проверить подписку\".",
-    author: "Автор",
-    genre: "Жанр"
+    subscribed: "🎉 Вы подписаны! Теперь можно пользоваться ботом.",
+    stillNotSubscribed: "❌ Вы еще не подписаны. Подпишитесь и нажмите \"✅ Проверить подписку\".",
+    
+    // 📌 Метаданные
+    author: "✍️ Автор",
+    genre: "🏷 Жанр"
   },
   en: {
-    welcome: "Welcome to the Books Bot! Please use the menu below:",
-    languageSelected: "Language selected!",
-    chooseLanguage: "Choose language:",
-    noPermission: "❌ You don't have permission to execute this command.",
-    bookNotFound: "❌ Book not found.",
+    // 👋 Greetings and main menu
+    welcome: "👋 Welcome to Books World! 📚\n\n🛎 With our bot you can:\n🔍 Search books\n📥 Download\n📚 Manage your library\n\n👇 Use the menu below:",
+    mainMenu: "🏠 Main Menu",
     back: "🔙 Back",
-    mainMenu: "🏠 Main menu",
-    searchBook: "📚 Search book",
-    allBooks: "📂 All books",
+    
+    // 🔍 Search
+    searchBook: "🔍 Search Book",
+    bookNotFound: "❌ Book not found!\n\n❗️ Possible reasons:\n1️⃣ Wrong title\n2️⃣ Book not in database\n3️⃣ Input error\n\n💡 Try again or contact admin @Sadikov001",
+    allBooks: "📚 All Books",
+    
+    // ⚙️ Settings
     settings: "⚙️ Settings",
-    contactInfo: "To contact admins:\n📞 Phone: +998974634455\n📲 Telegram: @Sadikov001",
-    bookAdded: "✅ Book added!",
-    adSent: "✅ Ad sent!",
+    changeLanguage: "🌐 Change Language",
+    languageChanged: "✅ Language changed!",
+    chooseLanguage: "🗣 Choose language:",
+    languageSelected: "✅ Language selected!",
+    
+    // 🔐 Admin functions
+    noPermission: "⛔️ No permission!",
+    bookAdded: "✅ Book added! 📖",
+    booksAdded: "✅ Added {count} books!\n✍️ Author: {author}\n🏷 Genre: {genre}",
+    adSent: "📢 Ad sent! ✅",
     adCanceled: "❌ Ad canceled.",
-    addMethod: "Choose book adding method:",
-    manualEntry: "📝 Manual entry",
-    autoEntry: "📂 From filename",
-    enterBookName: "📖 Enter book name:",
-    enterAuthor: "✍️ Enter author name:",
-    sendCover: "🖼 Send cover image for the book:",
-    sendFiles: "📄 Send book files (PDF, EPUB, etc.):",
-    fileReceived: "📄 File received:",
-    moreFiles: "You can send more files or press \"Done\" button",
+    
+    // 📥 Add books
+    addMethod: "📥 Adding method:",
+    manualEntry: "✍️ Manual",
+    autoEntry: "📂 From file",
+    enterBookName: "📖 Enter title:\n\n📌 Example: \"The Great Gatsby\"",
+    enterAuthor: "✍️ Enter author:\n\n📌 Example: \"F. Scott Fitzgerald\"",
+    sendCover: "🖼 Send cover:\n\n📸 Format: JPG/PNG\n⚖️ Size: up to 2MB",
+    sendFiles: "📄 Send book files:\n\n📂 Formats:\n✅ PDF\n✅ EPUB\n✅ DOCX\n\n⚖️ Max size: 50MB",
+    fileReceived: "📥 File received: {filename}",
+    moreFiles: "🔄 You can send more or press \"✅ Done\"",
     chooseGenre: "📂 Choose genre:",
-    booksAdded: "✅ Added {count} books!\n👤 Author: {author}\n📂 Genre: {genre}",
     noFiles: "❌ No files sent!",
-    changeLanguage: "🌐 Change language",
-    languageChanged: "✅ Language changed successfully!",
-    notSubscribed: "⚠️ To use the bot, you must subscribe to these channels:",
-    checkSubscription: "✅ Check subscription",
-    subscribed: "✅ You're subscribed to the channel(s)! Now you can use the bot.",
-    stillNotSubscribed: "❌ You're still not subscribed to the channel(s). Please subscribe and press \"Check subscription\" button.",
-    author: "Author",
-    genre: "Genre"
+    
+    // 📞 Contacts
+    contactInfo: "📞 Contacts:\n\n📱 Phone: +998974634455\n✉️ Telegram: @Sadikov001\n\n⏰ Working hours: 09:00-18:00",
+    
+    // 📢 Subscription
+    notSubscribed: "⚠️ To use bot, subscribe to channel(s):",
+    checkSubscription: "✅ Check Subscription",
+    subscribed: "🎉 Subscribed! Now you can use the bot.",
+    stillNotSubscribed: "❌ Still not subscribed. Please subscribe and press \"✅ Check Subscription\".",
+    
+    // 📌 Metadata
+    author: "✍️ Author",
+    genre: "🏷 Genre"
   }
 };
 
@@ -294,15 +339,15 @@ async function sendMonitoringInfo(action, user, additionalData = {}) {
     const userObj = users.find(u => u.id === user.id) || {};
     const userLanguage = userObj.language || 'uz';
     
-    let message = `👤 *User:* ${user.first_name} ${user.last_name || ''} (@${user.username || 'N/A'})\n`;
+    let message = `👤 *Foydalanuvchi:* ${user.first_name} ${user.last_name || ''} (@${user.username || 'Mavjud emas'})\n`;
     message += `🆔 *ID:* ${user.id}\n`;
-    message += `📅 *Joined:* ${new Date(userObj.joined_at || now).toLocaleDateString()}\n`;
-    message += `⏰ *Last active:* ${now.toLocaleString()}\n`;
-    message += `✅ *Subscribed:* ${userObj.subscribed ? 'Yes' : 'No'}\n\n`;
-    message += `📌 *Action:* ${action}\n`;
+    message += `📅 *Qo'shilgan sana:* ${new Date(userObj.joined_at || now).toLocaleDateString()}\n`;
+    message += `⏰ *Oxirgi faollik:* ${now.toLocaleString()}\n`;
+    message += `✅ *A'zolik:* ${userObj.subscribed ? 'Ha' : 'Yo\'q'}\n\n`;
+    message += `📌 *Harakat:* ${action}\n`;
 
     if (Object.keys(additionalData).length > 0) {
-      message += `\n📊 *Details:* \`\`\`${JSON.stringify(additionalData, null, 2)}\`\`\`\n`;
+      message += `\n📊 *Tafsilotlar:* \`\`\`${JSON.stringify(additionalData, null, 2)}\`\`\`\n`;
     }
 
     if (monitoringMessages.has(user.id)) {
@@ -516,62 +561,81 @@ async function showBooksByGenre(chatId, genre, userLanguage = 'uz') {
 }
 
 // Kitob qidirish
-async function searchBooks(chatId, query, userLanguage = 'uz') {
+// Kitob qidirish funksiyasi (optimallashtirilgan versiya)
+async function searchBooks(chatId, query, userLanguage = 'uz', isGenreSearch = false) {
   try {
-    const results = books.filter(
-      b => b.id === query || 
-           b.name.toLowerCase().includes(query.toLowerCase()) || 
-           b.author?.toLowerCase().includes(query.toLowerCase()) || 
-           b.genre?.toLowerCase().includes(query.toLowerCase())
-    );
-
-    if (results.length) {
-      for (const book of results) {
-        let caption = `📖 *${formatBookName(book.name)}*\n`;
-        caption += `👤 *${translations[userLanguage].author}:* ${formatBookName(book.author || "Noma'lum")}\n`;
-        caption += `📂 *${translations[userLanguage].genre}:* ${book.genre}\n\n`;
-        caption += `${REQUIRED_CHANNELS[0].link}`;
-        
-        if (book.file_id) {
-          const options = { 
-            caption, 
-            parse_mode: "Markdown",
-            reply_markup: getBackMenu(userLanguage).reply_markup
-          };
-
-          switch(book.file_type) {
-            case "document":
-              await bot.sendDocument(chatId, book.file_id, options);
-              break;
-            case "photo":
-              await bot.sendPhoto(chatId, book.file_id, options);
-              break;
-            case "video":
-              await bot.sendVideo(chatId, book.file_id, options);
-              break;
-            case "audio":
-              await bot.sendAudio(chatId, book.file_id, options);
-              break;
-            case "voice":
-              await bot.sendVoice(chatId, book.file_id, options);
-              break;
-          }
-        } else {
-          await bot.sendMessage(
-            chatId, 
-            `⚠️ ${formatBookName(book.name)} mavjud, lekin fayli yo'q.`, 
-            { 
-              parse_mode: "Markdown",
-              reply_markup: getBackMenu(userLanguage).reply_markup
-            }
-          );
-        }
-      }
-    } else {
+    // Bo'sh so'rovni tekshirish
+    if (!query || query.trim() === "") {
       await bot.sendMessage(
         chatId, 
         translations[userLanguage].bookNotFound,
         getBackMenu(userLanguage)
+      );
+      return;
+    }
+
+    // Kitoblarni qidirish
+    const searchQuery = query.toLowerCase().trim();
+    let results = books.filter(book => {
+      if (isGenreSearch) {
+        return book.genre?.toLowerCase().includes(searchQuery);
+      } else {
+        return (
+          book.name?.toLowerCase().includes(searchQuery) ||
+          book.author?.toLowerCase().includes(searchQuery)
+        );
+      }
+    });
+
+    if (results.length === 0) {
+      await bot.sendMessage(
+        chatId, 
+        translations[userLanguage].bookNotFound,
+        getBackMenu(userLanguage)
+      );
+      return;
+    }
+
+    // Agar janr bo'yicha qidirilayotgan bo'lsa
+    if (isGenreSearch) {
+      await sendBooksByGenre(chatId, results, query, userLanguage);
+      return;
+    }
+
+    // Agar oddiy qidiruv bo'lsa
+    if (results.length <= 5) {
+      // 5 tadan kam bo'lsa hammasini yuborish
+      for (const book of results) {
+        await sendBookFile(chatId, book, userLanguage);
+        await delay(500); // Flooddan qochish uchun
+      }
+    } else {
+      // 5 tadan ko'p bo'lsa birinchi 5 tasini yuborish
+      const firstFive = results.slice(0, 5);
+      for (const book of firstFive) {
+        await sendBookFile(chatId, book, userLanguage);
+        await delay(500);
+      }
+      
+      // Qolganlari uchun "Ko'proq ko'rish" tugmasi
+      const remainingCount = results.length - 5;
+      await bot.sendMessage(
+        chatId,
+        `📚 Yana ${remainingCount} ta natija topildi. Ko'proq ko'rish uchun tugmani bosing:`,
+        {
+          reply_markup: {
+            inline_keyboard: [
+              [{
+                text: `🔍 Ko'proq ko'rish (${remainingCount} ta)`,
+                callback_data: `show_more:${searchQuery}:5`
+              }],
+              [{
+                text: translations[userLanguage].back,
+                callback_data: "back_to_main"
+              }]
+            ]
+          }
+        }
       );
     }
   } catch (error) {
@@ -583,6 +647,273 @@ async function searchBooks(chatId, query, userLanguage = 'uz') {
     );
   }
 }
+
+// Janr bo'yicha kitoblarni yuborish
+async function sendBooksByGenre(chatId, results, genre, userLanguage) {
+  // 6 tadan kam bo'lsa hammasini yuborish
+  if (results.length <= 6) {
+    for (const book of results) {
+      await sendBookFile(chatId, book, userLanguage);
+      await delay(500);
+    }
+    return;
+  }
+
+  // 6 tadan ko'p bo'lsa birinchi 6 tasini yuborish
+  const firstSix = results.slice(0, 6);
+  for (const book of firstSix) {
+    await sendBookFile(chatId, book, userLanguage);
+    await delay(500);
+  }
+
+  // Qolganlari uchun "Ko'proq ko'rish" tugmasi
+  const remainingCount = results.length - 6;
+  await bot.sendMessage(
+    chatId,
+    `📚 "${genre}" janridan yana ${remainingCount} ta kitob topildi. Ko'proq ko'rish uchun tugmani bosing:`,
+    {
+      reply_markup: {
+        inline_keyboard: [
+          [{
+            text: `🔍 Ko'proq ko'rish (${remainingCount} ta)`,
+            callback_data: `show_more_genre:${genre}:6`
+          }],
+          [{
+            text: translations[userLanguage].back,
+            callback_data: "back_to_main"
+          }]
+        ]
+      }
+    }
+  );
+}
+
+// Kitob faylini yuborish (optimallashtirilgan)
+async function sendBookFile(chatId, book, userLanguage) {
+  if (!book.file_id) {
+    await bot.sendMessage(
+      chatId, 
+      `⚠️ ${formatBookName(book.name)} mavjud, lekin fayli yo'q.`, 
+      { 
+        parse_mode: "Markdown",
+        reply_markup: getBackMenu(userLanguage).reply_markup
+      }
+    );
+    return;
+  }
+
+  let caption = `📖 *${formatBookName(book.name)}*\n`;
+  caption += `👤 *${translations[userLanguage].author}:* ${formatBookName(book.author || "Noma'lum")}\n`;
+  caption += `📂 *${translations[userLanguage].genre}:* ${book.genre}\n\n`;
+  caption += `${REQUIRED_CHANNELS[0].link}`;
+
+  const options = { 
+    caption, 
+    parse_mode: "Markdown",
+    reply_markup: getBackMenu(userLanguage).reply_markup
+  };
+
+  switch(book.file_type) {
+    case "document":
+      await bot.sendDocument(chatId, book.file_id, options);
+      break;
+    case "photo":
+      await bot.sendPhoto(chatId, book.file_id, options);
+      break;
+    case "video":
+      await bot.sendVideo(chatId, book.file_id, options);
+      break;
+    case "audio":
+      await bot.sendAudio(chatId, book.file_id, options);
+      break;
+    case "voice":
+      await bot.sendVoice(chatId, book.file_id, options);
+      break;
+    default:
+      await bot.sendDocument(chatId, book.file_id, options);
+  }
+}
+
+// Qo'shimcha natijalarni ko'rsatish
+async function showMoreResults(chatId, query, offset, userLanguage, isGenre = false) {
+  let results;
+  
+  if (isGenre) {
+    results = books.filter(book => 
+      book.genre?.toLowerCase().includes(query.toLowerCase())
+    );
+  } else {
+    results = books.filter(book => 
+      book.name?.toLowerCase().includes(query.toLowerCase()) || 
+      book.author?.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
+  if (results.length <= offset) {
+    await bot.sendMessage(
+      chatId,
+      "⚠️ Boshqa natijalar topilmadi",
+      getBackMenu(userLanguage)
+    );
+    return;
+  }
+
+  const nextBatch = isGenre 
+    ? results.slice(offset, offset + 6)
+    : results.slice(offset, offset + 5);
+
+  for (const book of nextBatch) {
+    await sendBookFile(chatId, book, userLanguage);
+    await delay(500);
+  }
+
+  const newOffset = isGenre ? offset + 6 : offset + 5;
+  const remainingCount = results.length - newOffset;
+
+  if (remainingCount > 0) {
+    const buttonText = isGenre 
+      ? `🔍 Ko'proq ko'rish (${remainingCount} ta)`
+      : `🔍 Ko'proq ko'rish (${remainingCount} ta)`;
+
+    const callbackData = isGenre
+      ? `show_more_genre:${query}:${newOffset}`
+      : `show_more:${query}:${newOffset}`;
+
+    await bot.sendMessage(
+      chatId,
+      isGenre
+        ? `📚 "${query}" janridan yana ${remainingCount} ta kitob topildi.`
+        : `📚 "${query}" bo'yicha yana ${remainingCount} ta natija topildi.`,
+      {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: buttonText, callback_data: callbackData }],
+            [{ text: translations[userLanguage].back, callback_data: "back_to_main" }]
+          ]
+        }
+      }
+    );
+  }
+}
+
+// Callback query handler (yangi versiya)
+bot.on("callback_query", async (query) => {
+  try {
+    const chatId = query.message.chat.id;
+    const user = query.from;
+    const userObj = users.find(u => u.id === user.id) || {};
+    const userLanguage = userObj.language || 'uz';
+
+    if (query.data.startsWith("show_more:")) {
+      const parts = query.data.split(":");
+      const searchQuery = parts[1];
+      const offset = parseInt(parts[2]);
+      await showMoreResults(chatId, searchQuery, offset, userLanguage);
+      await bot.answerCallbackQuery(query.id);
+    }
+    else if (query.data.startsWith("show_more_genre:")) {
+      const parts = query.data.split(":");
+      const genre = parts[1];
+      const offset = parseInt(parts[2]);
+      await showMoreResults(chatId, genre, offset, userLanguage, true);
+      await bot.answerCallbackQuery(query.id);
+    }
+  } catch (error) {
+    console.error("Callback query error:", error);
+    await bot.answerCallbackQuery(query.id, {
+      text: "Xatolik yuz berdi!"
+    });
+  }
+});
+
+// Qisqa kutish funksiyasi
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Kitob tafsilotlarini yuborish
+async function sendBookDetails(chatId, book, userLanguage) {
+  let caption = `📖 *${formatBookName(book.name)}*\n`;
+  caption += `👤 *${translations[userLanguage].author}:* ${formatBookName(book.author || "Noma'lum")}\n`;
+  caption += `📂 *${translations[userLanguage].genre}:* ${book.genre}\n\n`;
+  caption += `${REQUIRED_CHANNELS[0].link}`;
+  
+  if (book.file_id) {
+    const options = { 
+      caption, 
+      parse_mode: "Markdown",
+      reply_markup: getBackMenu(userLanguage).reply_markup
+    };
+
+    switch(book.file_type) {
+      case "document":
+        await bot.sendDocument(chatId, book.file_id, options);
+        break;
+      case "photo":
+        await bot.sendPhoto(chatId, book.file_id, options);
+        break;
+      case "video":
+        await bot.sendVideo(chatId, book.file_id, options);
+        break;
+      case "audio":
+        await bot.sendAudio(chatId, book.file_id, options);
+        break;
+      case "voice":
+        await bot.sendVoice(chatId, book.file_id, options);
+        break;
+      default:
+        await bot.sendDocument(chatId, book.file_id, options);
+    }
+  } else {
+    await bot.sendMessage(
+      chatId, 
+      `⚠️ ${formatBookName(book.name)} mavjud, lekin fayli yo'q.`, 
+      { 
+        parse_mode: "Markdown",
+        reply_markup: getBackMenu(userLanguage).reply_markup
+      }
+    );
+  }
+}
+
+// Callback query handlerga qo'shimcha (barcha natijalarni ko'rsatish)
+bot.on("callback_query", async (query) => {
+  try {
+    // ... avvalgi kodlar ...
+    
+    if (query.data.startsWith("show_all_results:")) {
+      const searchQuery = query.data.split(":")[1];
+      const chatId = query.message.chat.id;
+      const user = query.from;
+      const userObj = users.find(u => u.id === user.id) || {};
+      const userLanguage = userObj.language || 'uz';
+      
+      // Qidiruvni qayta bajarish
+      const results = books.filter(book => {
+        const bookName = book.name?.toLowerCase() || '';
+        const author = book.author?.toLowerCase() || '';
+        const genre = book.genre?.toLowerCase() || '';
+
+        return (
+          bookName.includes(searchQuery) ||
+          author.includes(searchQuery) ||
+          genre.includes(searchQuery)
+        );
+      });
+
+      // Har bir kitob uchun alohida xabar yuborish
+      for (const book of results) {
+        await sendBookDetails(chatId, book, userLanguage);
+      }
+      
+      await bot.answerCallbackQuery(query.id);
+    }
+    
+    // ... avvalgi kodlar ...
+  } catch (error) {
+    console.error("Callback query error:", error);
+  }
+});
 
 // /start komandasi
 bot.onText(/\/start/, async (msg) => {
@@ -1085,40 +1416,48 @@ bot.on("message", async (msg) => {
 
     // Monitoring harakatlari
     if (text === translations[userLanguage].searchBook) {
-      sendMonitoringInfo("Entered book search", user);
+      sendMonitoringInfo("Kitob qidirish bo'limiga kirdi", user);
     } else if (text === translations[userLanguage].allBooks) {
-      sendMonitoringInfo("Entered all books section", user);
+      sendMonitoringInfo("Barcha kitoblar bo'limiga kirdi", user);
     } else if (text === translations[userLanguage].settings) {
-      sendMonitoringInfo("Entered settings", user);
+      sendMonitoringInfo("Sozlamalar bo'limiga kirdi", user);
     } else if (text && !text.startsWith('/')) {
-      sendMonitoringInfo("Book search request", user, { query: text });
+      sendMonitoringInfo("Kitob qidirish so'rovi", user, { sorov: text });
     }
 
     // Orqaga tugmasi
     if (text === translations[userLanguage].back) {
       await bot.sendMessage(chatId, translations[userLanguage].back, getMainMenu(userLanguage));
-      updateUserActivity(msg.from.id, "Went back");
+      updateUserActivity(msg.from.id, "Orqaga qaytdi");
       return;
     }
 
     // Asosiy menyu tugmasi
     if (text === translations[userLanguage].mainMenu) {
       await bot.sendMessage(chatId, translations[userLanguage].mainMenu, getMainMenu(userLanguage));
-      updateUserActivity(msg.from.id, "Returned to main menu");
+      updateUserActivity(msg.from.id, "Asosiy menyuga qaytdi");
       return;
     }
 
     // Kitob qidirish
     if (text === translations[userLanguage].searchBook) {
-      await bot.sendMessage(chatId, "📚 Search by book name, author or genre.", getBackMenu(userLanguage));
-      updateUserActivity(msg.from.id, "Started book search");
+      await bot.sendMessage(
+        chatId, 
+        "🔍 Kitob nomi, muallifi yoki janri bo'yicha qidiring. 📚 Misol uchun: 'Oʻtkan kunlar' yoki 'Abdulla Qodiriy'. ✨ Agar topa olmasangiz, iltimos, adminga xabar bering. 📝 /contact deb yozsangiz, admin bilan bog'lanasiz. 📲",
+        getBackMenu(userLanguage)
+      );
+      updateUserActivity(msg.from.id, "Kitob qidirishni boshladi");
       return;
     }
 
     // Barcha kitoblar
     if (text === translations[userLanguage].allBooks) {
-      await bot.sendMessage(chatId, "Choose genre:", getGenreMenu(userLanguage));
-      updateUserActivity(msg.from.id, "Viewed all books");
+      await bot.sendMessage(
+        chatId, 
+        "Janrni tanlang:", 
+        getGenreMenu(userLanguage)
+      );
+      updateUserActivity(msg.from.id, "Barcha kitoblarni ko'rdi");
       return;
     }
 
@@ -1129,7 +1468,7 @@ bot.on("message", async (msg) => {
         translations[userLanguage].chooseLanguage, 
         languageMenu
       );
-      updateUserActivity(msg.from.id, "Opened settings");
+      updateUserActivity(msg.from.id, "Sozlamalarni ochdi");
       return;
     }
 
@@ -1139,7 +1478,7 @@ bot.on("message", async (msg) => {
         waitingForAd[chatId].text = text;
         waitingForAd[chatId].step = "waiting_for_ad_confirmation";
 
-        const previewText = "📢 Ad preview:\n\n" + waitingForAd[chatId].text;
+        const previewText = "📢 Reklama oldindan ko'rinishi:\n\n" + waitingForAd[chatId].text;
 
         if (waitingForAd[chatId].file_id) {
           const options = { 
@@ -1160,26 +1499,30 @@ bot.on("message", async (msg) => {
 
         await bot.sendMessage(
           chatId, 
-          "✅ Confirm sending this ad?",
+          "✅ Ushbu reklamani yuborishni tasdiqlaysizmi?",
           {
             reply_markup: {
               inline_keyboard: [
-                [{ text: "✅ Confirm", callback_data: "confirm_ad" }],
-                [{ text: "❌ Cancel", callback_data: "cancel_ad" }],
+                [{ text: "✅ Tasdiqlash", callback_data: "confirm_ad" }],
+                [{ text: "❌ Bekor qilish", callback_data: "cancel_ad" }],
                 [{ text: translations[userLanguage].back, callback_data: "back_to_main" }],
               ],
             },
           }
         );
-        updateUserActivity(msg.from.id, "Entered ad text");
+        updateUserActivity(msg.from.id, "Reklama matnini kiritdi");
       }
       return;
     }
 
     // "Tayyor" tugmasi (avtomatik kitob qo'shish)
-    if (waitingForBook[chatId] && waitingForBook[chatId].mode === "auto" && text === "✅ Done") {
+    if (waitingForBook[chatId] && waitingForBook[chatId].mode === "auto" && text === "✅ Tayyor") {
       if (waitingForBook[chatId].files.length === 0) {
-        await bot.sendMessage(chatId, translations[userLanguage].noFiles, getMainMenu(userLanguage));
+        await bot.sendMessage(
+          chatId, 
+          translations[userLanguage].noFiles, 
+          getMainMenu(userLanguage)
+        );
         delete waitingForBook[chatId];
         return;
       }
@@ -1238,13 +1581,12 @@ bot.on("message", async (msg) => {
     // Kitob qidirish funksiyasi
     if (text !== "/start") {
       await searchBooks(chatId, text, userLanguage);
-      updateUserActivity(msg.from.id, `Searched for "${text}"`);
+      updateUserActivity(msg.from.id, `"${text}" so'zi bo'yicha qidirdi`);
     }
   } catch (error) {
-    console.error("Message handler error:", error);
+    console.error("Xabar qayta ishlashda xato:", error);
   }
 });
-
 // Fayllarni qayta ishlash
 bot.on("document", (msg) => processFile(msg, "document"));
 bot.on("photo", (msg) => processFile(msg, "photo"));
@@ -1483,3 +1825,7 @@ setInterval(backupData, 3600000);
 
 console.log("✅ Library bot started...");
 console.log("✅ Monitoring bot started...");
+
+
+
+
